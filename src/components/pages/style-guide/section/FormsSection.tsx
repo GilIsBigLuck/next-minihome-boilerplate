@@ -1,7 +1,7 @@
 "use client";
 
 import { cva } from "class-variance-authority";
-import { Input, Toggle, Radio, Select, Textarea, Checkbox, InputGroup } from "@/components/ui";
+import { Input, Toggle, Radio, Select, Textarea, Checkbox, InputGroup, FileUpload } from "@/components/ui";
 
 const sectionStyles = cva([
     "space-y-6",
@@ -95,6 +95,12 @@ export default function FormsSection() {
                     maxLength={500}
                     showCount
                     defaultValue=""
+                />
+
+                <FileUpload
+                    label="File Upload"
+                    hint="PNG, JPG, PDF up to 10MB"
+                    accept="image/*,.pdf"
                 />
 
                 <div className="space-y-4">
