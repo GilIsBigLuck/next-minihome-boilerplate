@@ -4,12 +4,12 @@ import { cva } from "class-variance-authority";
 // 헤더 스타일
 const headerStyles = cva([
   "fixed top-0 left-0 right-0 z-header bg-bg-light/80", 
-  "dark:bg-bg-dark/80 backdrop-blur-md border-b border-primary/10",
+  "backdrop-blur-md border-b border-primary/10",
 ])
 
 // 헤더 내부 스타일
 const headerInnerStyles = cva([
-  "max-w-layout-md mx-auto px-6 h-20 flex items-center justify-between"
+  "max-w-layout-md mx-auto h-20 flex items-center justify-between"
 ])
 
 // 로고(h1) 스타일

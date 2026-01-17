@@ -1,11 +1,13 @@
+import HeroSection from "@/components/pages/home/HeroSection";
+import MetadataSection from "@/components/pages/home/MetadataSection";
+
 export default function Home() {
+
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold text-center">
-          Welcome to Next.js 15.5.7
-        </h1>
-      </div>
-    </main>
+    <div id="homePage">
+      <HeroSection />
+      <MetadataSection />
+    </div>
   );
 }

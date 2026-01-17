@@ -24,7 +24,7 @@ const config: Config = {
        * ========================= */
       colors: {
 
-        "primary": "#1a1a1a",
+        "primary": "#2E04FD",
         "bg-light": "#fcfcfc",
         "bg-dark": "#0f0f0f",
         "surface-dark": "#1a2433",
@@ -33,7 +33,7 @@ const config: Config = {
 
         // 시맨틱 토큰 
         text: {
-          primary: "#141414",
+          primary: "#2E04FD",
           secondary: "#6B7280",
           muted: "#9CA3AF",
           inverse: "#FFFFFF",
@@ -49,7 +49,7 @@ const config: Config = {
           subtle: "#F3F4F6",
         },
         brand: {
-          primary: "#141414",
+          primary: "#2E04FD",
           accent: "#2563EB",
         },
         state: {
@@ -91,7 +91,7 @@ const config: Config = {
       },
 
       /* =========================
-       * Shadows (추가)
+       * Shadows
        * ========================= */
       boxShadow: {
         card: "0 8px 24px rgba(0,0,0,0.08)",
@@ -108,7 +108,7 @@ const config: Config = {
       },
 
       /* =========================
-       * Keyframes (기존 유지)
+       * Keyframes
        * ========================= */
       keyframes: {
         fadeIn: {
@@ -122,7 +122,7 @@ const config: Config = {
       },
 
       /* =========================
-       * Animation (기존 유지)
+       * Animation
        * ========================= */
       animation: {
         fadeIn: "fadeIn 0.5s ease-out",
