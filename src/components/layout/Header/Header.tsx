@@ -45,7 +45,12 @@ export default function Header() {
           <Link href="/style-guide" className={navItemStyles()}>Style Guide</Link>
           <Link href="/contact" className={navItemStyles()}>Contact</Link>
         </nav>
-        
+        <Link
+          href="/login"
+          className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all"
+        >
+          Login
+        </Link>
       </div>
 
     </header>
