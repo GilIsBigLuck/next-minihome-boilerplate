@@ -42,6 +42,7 @@ export default function Header() {
 
         <nav className={navStyles()}>
           <Link href="/about" className={navItemStyles()}>About</Link>
+          <Link href="/style-guide" className={navItemStyles()}>Style Guide</Link>
           <Link href="/contact" className={navItemStyles()}>Contact</Link>
         </nav>
         
