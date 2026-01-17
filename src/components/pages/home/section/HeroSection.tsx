@@ -49,7 +49,7 @@ export default function HeroSection() {
                         Sub Title
                     </p>
                     <h2 className={heroBannerTitleStyles()}>
-                        mini's <br/> Clear Sections
+                        mini&apos;s <br/> Clear Sections
                     </h2>
                 </div>
 

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build:*)",
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate status)",
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate log --oneline -3)",
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate add -A)",
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate commit -m \"$\\(cat <<''EOF''\n작업자 : claude, 작업내용 : Home/About/Contact 페이지 섹션 컴포넌트 작업\n\n- Home 페이지 섹션 추가 \\(Challenge, Imagery, Solution, Results, NextProject\\)\n- About 페이지 섹션 추가 \\(Hero, Story, Values, Team, CTA\\)\n- Contact 페이지 섹션 추가 \\(Hero, ContactForm, Map\\)\n- Footer 레이아웃 컴포넌트 업데이트\n- 섹션 컴포넌트 section 폴더로 구조화\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+    ]
+  }
+}
