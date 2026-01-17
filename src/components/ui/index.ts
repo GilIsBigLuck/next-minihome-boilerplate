@@ -10,3 +10,4 @@ export { Select, selectStyles, selectLabelStyles, type SelectProps, type SelectO
 export { Textarea, textareaStyles, textareaLabelStyles, type TextareaProps } from "./Textarea";
 export { Checkbox, checkboxContainerStyles, type CheckboxProps } from "./Checkbox";
 export { InputGroup, inputGroupStyles, type InputGroupProps } from "./InputGroup";
+export { FileUpload, fileUploadDropzoneStyles, fileUploadLabelStyles, type FileUploadProps } from "./FileUpload";
