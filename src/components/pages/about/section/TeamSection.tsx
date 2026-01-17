@@ -37,8 +37,8 @@ const teamGridStyles = cva([
     "md:grid-cols-3",
 ])
 
-const teamMemberStyles = cva([
-    "group",
+const teamMemberLinkStyles = cva([
+    "group block",
 ])
 
 const teamMemberImageContainerStyles = cva([
@@ -63,6 +63,7 @@ const teamMemberBioStyles = cva([
 ])
 
 interface TeamMemberProps {
+    slug: string;
     name: string;
     role: string;
     bio: string;
@@ -71,18 +72,21 @@ interface TeamMemberProps {
 
 const teamMembers: TeamMemberProps[] = [
     {
+        slug: "marcus-thorne",
         name: "Marcus Thorne",
         role: "Chief Executive Officer",
         bio: "Marcus has led digital transformations for over 50 global brands, focusing on structural efficiency.",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAryizkOMGbfc-A75-V03vI6XQN2g_Iiio_QzGXivAH6g5tXnS3wjRLkwJJaMMuFz79_V1CjlKYV_ivveLwhgfke8QbDfaHtSO2QvhWX-hnPAFZrs2A4XK3kPenRWpaGgrTuZSN7oOXrE0XqB4GUj5kABDncqLcsg5uTSNYRam3irctohugTBX4UVZXkOo9b-LIpge2Cqs0X4XfSBlMzdpQGcfYfPA6sHnLavEvYy1ZUxMa8ICif5PQaevpNOYJW44zgWkCBIoby3Ik"
     },
     {
+        slug: "elena-rodriguez",
         name: "Elena Rodriguez",
         role: "Chief Technology Officer",
         bio: "A pioneer in scalable architecture, Elena ensures our technological foundations are as clear as our vision.",
         image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAOQ5dlFQqCWeCdCuEedupvb76q7GTOCnpFda8K1tXmZ-z_qCt4yyfL6Ge7pmSAb8tKZHb80BKGDeSAfgLp4ckxlDZvSdkQcm0nySk5s6Dsvfxcw-Q-m3LlotgeNOpbGY2tQeecGWrVDj0Cb34vsmiGFjnlw9OkF9CKnQOvTI5tlLRex-MG__nh9EtMQob-XzZBHyBJkX8jeA84FnOTRvAO53iC1G6Q5SGYjCSBlYUPT04WbJ_OmcyP7jZ2CQljVm6Y7K1zqMr7yUEN"
     },
     {
+        slug: "jameson-wu",
         name: "Jameson Wu",
         role: "Head of Design",
         bio: "Jameson translates complex data into intuitive experiences that delight users and drive results.",
@@ -90,9 +94,9 @@ const teamMembers: TeamMemberProps[] = [
     }
 ]
 
-function TeamMember({ name, role, bio, image }: TeamMemberProps) {
+function TeamMember({ slug, name, role, bio, image }: TeamMemberProps) {
     return (
-        <div className={teamMemberStyles()}>
+        <Link href={`/about/team/${slug}`} className={teamMemberLinkStyles()}>
             <div className={teamMemberImageContainerStyles()}>
                 <Image
                     src={image}
@@ -104,7 +108,7 @@ function TeamMember({ name, role, bio, image }: TeamMemberProps) {
             <h3 className={teamMemberNameStyles()}>{name}</h3>
             <p className={teamMemberRoleStyles()}>{role}</p>
             <p className={teamMemberBioStyles()}>{bio}</p>
-        </div>
+        </Link>
     )
 }
 

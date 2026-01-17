@@ -5,7 +5,9 @@
       "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate status)",
       "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate log --oneline -3)",
       "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate add -A)",
-      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate commit -m \"$\\(cat <<''EOF''\n작업자 : claude, 작업내용 : Home/About/Contact 페이지 섹션 컴포넌트 작업\n\n- Home 페이지 섹션 추가 \\(Challenge, Imagery, Solution, Results, NextProject\\)\n- About 페이지 섹션 추가 \\(Hero, Story, Values, Team, CTA\\)\n- Contact 페이지 섹션 추가 \\(Hero, ContactForm, Map\\)\n- Footer 레이아웃 컴포넌트 업데이트\n- 섹션 컴포넌트 section 폴더로 구조화\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate commit -m \"$\\(cat <<''EOF''\n작업자 : claude, 작업내용 : Home/About/Contact 페이지 섹션 컴포넌트 작업\n\n- Home 페이지 섹션 추가 \\(Challenge, Imagery, Solution, Results, NextProject\\)\n- About 페이지 섹션 추가 \\(Hero, Story, Values, Team, CTA\\)\n- Contact 페이지 섹션 추가 \\(Hero, ContactForm, Map\\)\n- Footer 레이아웃 컴포넌트 업데이트\n- 섹션 컴포넌트 section 폴더로 구조화\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate push)",
+      "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate commit -m \"$\\(cat <<''EOF''\n작업자 : claude, 작업내용 : 팀원 상세 페이지 추가\n\n- /about/team/[slug] 동적 라우트 추가\n- 팀원 상세 페이지 섹션 컴포넌트 \\(ProfileHero, Expertise, Projects\\)\n- TeamSection에서 팀원 클릭시 상세 페이지 이동 기능 추가\n- teamData.ts에 팀원 데이터 구조화\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
     ]
   }
 }
