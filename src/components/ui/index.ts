@@ -6,3 +6,7 @@ export { Breadcrumb, breadcrumbStyles, type BreadcrumbItem, type BreadcrumbProps
 export { Pagination, paginationStyles, paginationButtonStyles, type PaginationProps } from "./Pagination";
 export { Modal, modalOverlayStyles, modalContentStyles, type ModalProps } from "./Modal";
 export { ColorSwatch, colorSwatchStyles, type ColorSwatchProps } from "./ColorSwatch";
+export { Select, selectStyles, selectLabelStyles, type SelectProps, type SelectOption } from "./Select";
+export { Textarea, textareaStyles, textareaLabelStyles, type TextareaProps } from "./Textarea";
+export { Checkbox, checkboxContainerStyles, type CheckboxProps } from "./Checkbox";
+export { InputGroup, inputGroupStyles, type InputGroupProps } from "./InputGroup";
