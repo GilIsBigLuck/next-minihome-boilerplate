@@ -11,7 +11,10 @@
       "Bash(git -C /Users/gill/Desktop/gil/repo/next-minihome-boilerplate commit -m \"$\\(cat <<''EOF''\n작업자 : claude, 작업내용 : Style Guide 페이지 및 공통 UI 컴포넌트 추가\n\n- 공통 UI 컴포넌트 생성 \\(src/components/ui/\\)\n  - Button \\(Primary, Secondary, Outline, Ghost, Danger variants\\)\n  - Input \\(Default, Error, Success states\\)\n  - Toggle, Radio\n  - Breadcrumb, Pagination\n  - Modal, ColorSwatch\n- /style-guide 페이지 추가\n- Style Guide 섹션 컴포넌트 \\(Typography, Colors, Buttons, Forms, Navigation\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(npm install:*)",
+      "Bash(npx prisma init:*)",
+      "Bash(npx prisma:*)"
     ]
   }
 }

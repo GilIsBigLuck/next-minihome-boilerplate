@@ -2,7 +2,12 @@
 
 import { cva } from "class-variance-authority";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { Input, Button, Checkbox } from "@/components/ui";
+import { useRegister } from "@/hooks";
+import { registerSchema, RegisterInput } from "@/lib/validations";
 
 const sectionStyles = cva([
     "flex-1 flex items-center justify-center p-6 sm:p-12",
@@ -36,14 +41,6 @@ const formStyles = cva([
 
 const passwordRowStyles = cva([
     "grid grid-cols-1 sm:grid-cols-2 gap-4",
-]);
-
-const strengthBarContainerStyles = cva([
-    "flex gap-1 h-1 w-full rounded-full overflow-hidden bg-bg-muted dark:bg-white/5 mt-1",
-]);
-
-const strengthBarStyles = cva([
-    "w-1/3 bg-primary/40",
 ]);
 
 const strengthHintStyles = cva([
@@ -93,6 +90,10 @@ const footerLinkStyles = cva([
     "text-primary font-bold hover:underline underline-offset-4 ml-1",
 ]);
 
+const errorStyles = cva([
+    "text-sm text-state-danger bg-red-50 dark:bg-red-500/10 p-3 rounded-lg",
+]);
+
 function GoogleIcon() {
     return (
         <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -113,6 +114,28 @@ function GithubIcon() {
 }
 
 export default function RegisterFormSection() {
+    const registerMutation = useRegister();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<RegisterInput>({
+        resolver: zodResolver(registerSchema),
+    });
+
+    const onSubmit = (data: RegisterInput) => {
+        registerMutation.mutate(data);
+    };
+
+    const handleGoogleSignUp = () => {
+        signIn("google", { callbackUrl: "/" });
+    };
+
+    const handleGithubSignUp = () => {
+        signIn("github", { callbackUrl: "/" });
+    };
+
     return (
         <section className={sectionStyles()}>
             <div className={containerStyles()}>
@@ -124,17 +147,27 @@ export default function RegisterFormSection() {
                         </p>
                     </div>
 
-                    <form className={formStyles()}>
+                    <form className={formStyles()} onSubmit={handleSubmit(onSubmit)}>
+                        {registerMutation.error && (
+                            <div className={errorStyles()}>
+                                {registerMutation.error.message}
+                            </div>
+                        )}
+
                         <Input
                             label="Full Name"
                             type="text"
                             placeholder="e.g. Jane Doe"
+                            error={errors.name?.message}
+                            {...register("name")}
                         />
 
                         <Input
                             label="Email Address"
                             type="email"
                             placeholder="name@company.com"
+                            error={errors.email?.message}
+                            {...register("email")}
                         />
 
                         <div className={passwordRowStyles()}>
@@ -142,32 +175,34 @@ export default function RegisterFormSection() {
                                 label="Password"
                                 type="password"
                                 placeholder="Enter password"
+                                error={errors.password?.message}
+                                {...register("password")}
                             />
                             <Input
                                 label="Confirm"
                                 type="password"
                                 placeholder="Confirm password"
+                                error={errors.confirmPassword?.message}
+                                {...register("confirmPassword")}
                             />
                         </div>
 
-                        <div>
-                            <div className={strengthBarContainerStyles()}>
-                                <div className={strengthBarStyles()} />
-                                <div className="w-1/3 bg-transparent" />
-                                <div className="w-1/3 bg-transparent" />
-                            </div>
-                            <p className={strengthHintStyles()}>
-                                Use 8 or more characters with a mix of letters, numbers &amp; symbols.
-                            </p>
-                        </div>
+                        <p className={strengthHintStyles()}>
+                            Use 8 or more characters with a mix of letters, numbers &amp; symbols.
+                        </p>
 
                         <Checkbox
                             label="I agree to the Terms of Service and Privacy Policy"
                             description="By creating an account, you agree to our terms."
                         />
 
-                        <Button size="lg" className="w-full">
-                            Create Account
+                        <Button
+                            type="submit"
+                            size="lg"
+                            className="w-full"
+                            disabled={registerMutation.isPending}
+                        >
+                            {registerMutation.isPending ? "Creating account..." : "Create Account"}
                         </Button>
                     </form>
 
@@ -181,11 +216,19 @@ export default function RegisterFormSection() {
                     </div>
 
                     <div className={socialGridStyles()}>
-                        <button type="button" className={socialButtonStyles()}>
+                        <button
+                            type="button"
+                            className={socialButtonStyles()}
+                            onClick={handleGoogleSignUp}
+                        >
                             <GoogleIcon />
                             <span>Google</span>
                         </button>
-                        <button type="button" className={socialButtonStyles()}>
+                        <button
+                            type="button"
+                            className={socialButtonStyles()}
+                            onClick={handleGithubSignUp}
+                        >
                             <GithubIcon />
                             <span>Github</span>
                         </button>

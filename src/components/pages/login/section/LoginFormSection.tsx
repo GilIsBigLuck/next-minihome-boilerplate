@@ -2,7 +2,12 @@
 
 import { cva } from "class-variance-authority";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { Input, Button, Checkbox } from "@/components/ui";
+import { useLogin } from "@/hooks";
+import { loginSchema, LoginInput } from "@/lib/validations";
 
 const sectionStyles = cva([
     "flex-1 flex items-center justify-center p-6 md:p-12",
@@ -73,6 +78,10 @@ const footerLinkStyles = cva([
     "text-primary font-bold hover:underline ml-1",
 ]);
 
+const errorStyles = cva([
+    "text-sm text-state-danger bg-red-50 dark:bg-red-500/10 p-3 rounded-lg",
+]);
+
 function GoogleIcon() {
     return (
         <svg className="size-5" viewBox="0 0 24 24">
@@ -85,6 +94,24 @@ function GoogleIcon() {
 }
 
 export default function LoginFormSection() {
+    const login = useLogin();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<LoginInput>({
+        resolver: zodResolver(loginSchema),
+    });
+
+    const onSubmit = (data: LoginInput) => {
+        login.mutate(data);
+    };
+
+    const handleGoogleLogin = () => {
+        signIn("google", { callbackUrl: "/" });
+    };
+
     return (
         <section className={sectionStyles()}>
             <div className={containerStyles()}>
@@ -96,11 +123,19 @@ export default function LoginFormSection() {
                 </div>
 
                 <div className={formContainerStyles()}>
-                    <form className={formStyles()}>
+                    <form className={formStyles()} onSubmit={handleSubmit(onSubmit)}>
+                        {login.error && (
+                            <div className={errorStyles()}>
+                                {login.error.message}
+                            </div>
+                        )}
+
                         <Input
                             label="Email Address"
                             type="email"
                             placeholder="name@company.com"
+                            error={errors.email?.message}
+                            {...register("email")}
                         />
 
                         <div>
@@ -113,6 +148,8 @@ export default function LoginFormSection() {
                             <Input
                                 type="password"
                                 placeholder="Enter your password"
+                                error={errors.password?.message}
+                                {...register("password")}
                             />
                         </div>
 
@@ -120,8 +157,13 @@ export default function LoginFormSection() {
                             label="Keep me signed in"
                         />
 
-                        <Button size="lg" className="w-full">
-                            Log In
+                        <Button
+                            type="submit"
+                            size="lg"
+                            className="w-full"
+                            disabled={login.isPending}
+                        >
+                            {login.isPending ? "Logging in..." : "Log In"}
                         </Button>
 
                         <div className={dividerStyles()}>
@@ -130,7 +172,11 @@ export default function LoginFormSection() {
                             <div className={dividerLineStyles()} />
                         </div>
 
-                        <button type="button" className={socialButtonStyles()}>
+                        <button
+                            type="button"
+                            className={socialButtonStyles()}
+                            onClick={handleGoogleLogin}
+                        >
                             <GoogleIcon />
                             Google
                         </button>
