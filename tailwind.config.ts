@@ -24,7 +24,7 @@ const config: Config = {
        * ========================= */
       colors: {
 
-        "primary": "#2E04FD",
+        "primary": "#0e776c",
         "bg-light": "#fcfcfc",
         "bg-dark": "#0f0f0f",
         "surface-dark": "#1a2433",
@@ -33,7 +33,7 @@ const config: Config = {
 
         // 시맨틱 토큰 
         text: {
-          primary: "#2E04FD",
+          primary: "#0e776c",
           secondary: "#6B7280",
           muted: "#9CA3AF",
           inverse: "#FFFFFF",
@@ -49,7 +49,7 @@ const config: Config = {
           subtle: "#F3F4F6",
         },
         brand: {
-          primary: "#2E04FD",
+          primary: "#0e776c",
           accent: "#2563EB",
         },
         state: {

@@ -84,7 +84,7 @@ const storyBlocks: StoryBlockProps[] = [
             "Founded in 2014, Clear Sections began as a three-person collective in a shared workspace. Our mission was simple: eliminate the noise that prevents great ideas from scaling.",
             "A decade later, we've evolved into an industry leader, helping Fortune 500 companies and startups alike find their true north through structured innovation frameworks."
         ],
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDrEk2q2sEvIWy3nefvnYILMZsM12TzChDW2dskRS1RgyKjRG7qMYMS7MjhaeHX_LxIX5JoGGkIL7_jscLFI0NEfvHz9J9M2A8dTVZ-SFs2ENs-XTE4osW3nbzuI_MHergkB3RMaRsnEX9Uolj43TMXV6DgZiqK3QUJZPudka5TzAK5C62xR68j4tH3OLAUmhOnPLPFvDU3GnnCdaOHoSytR42Is8L6DqcAdfA0OLTDFfVOqZMkrBh3a3m-5P2InNzFJ6wR-7zCad6s",
+        image: "/dummy/fons-heijnsbroek-v3mm6Mjkm6o-unsplash.jpg",
         imageAlt: "Modern minimalist office space with sunlight",
         reverse: false
     },
@@ -93,7 +93,7 @@ const storyBlocks: StoryBlockProps[] = [
         paragraphs: [
             "We don't just adapt to change; we define it. Our methodology has been refined through thousands of projects, ensuring that \"clarity\" isn't just a buzzword, but a measurable outcome."
         ],
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCN4RRi7hwK71Jpqp-3EMHHaAcwVvhU97eNBLUPd-Xp_eFB36PpXI24fGEBtrXAbooBb3yQ1jXq-KGJVHYOuDDO1CN6uEphGITTs711FGWvPLvCjkooLG633dw1FbhyK33PuM8j1WDy39XmQrJoE4vb3R496ttJUpLx9-rScYgiIGSKfUBRvmykffLmSI22IB9cGSjVD3stAIcvy8sdX-larY6DacOTQSkd07WUnleEQFe1ww8q7CdnrS5-X-auirKGkkYflRt9lfbg",
+        image: "/dummy/steve-johnson-SR6hGVgpZZc-unsplash.jpg",
         imageAlt: "Collaborative team working on a project",
         reverse: true,
         teamAvatars: [
@@ -180,7 +180,7 @@ function StoryBlock({ title, paragraphs, image, imageAlt, reverse, teamAvatars, 
 
 export default function StorySection() {
     return (
-        <section className={storySectionStyles()}>
+        <section id="journey-to-clarity" className={storySectionStyles()}>
             <div className={storyInnerStyles()}>
                 {storyBlocks.map((block, index) => (
                     <StoryBlock key={index} {...block} />

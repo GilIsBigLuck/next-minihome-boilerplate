@@ -107,7 +107,7 @@ const valuesContent: ValuesContentProps = {
 
 export default function ValuesSection() {
     return (
-        <section className={valuesSectionStyles()}>
+        <section id="core-principles" className={valuesSectionStyles()}>
             <div className={valuesInnerStyles()}>
                 <div className={valuesHeaderStyles()}>
                     <h2 className={valuesTitleStyles()}>{valuesContent.title}</h2>

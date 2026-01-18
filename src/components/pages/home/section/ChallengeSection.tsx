@@ -26,7 +26,7 @@ interface ChallengeContentProps {
 }
 
 const challengeContent: ChallengeContentProps = {
-    title: "The Challenge",
+    title: "Section Title",
     paragraphs: [
         "Studio Archstone sought to redefine the visual language of urban redevelopment. Their existing brand felt rooted in the past, failing to communicate the sustainable and human-centric approach of their modern architectural projects.",
         "We were tasked with creating a comprehensive identity system that bridges the gap between industrial heritage and future-focused innovation, ensuring consistency across physical sites and digital touchpoints."

@@ -39,8 +39,8 @@ function MetadataItem({ title, value }: MetadataItemProps) {
 }
 
 const metadataItems = [
-    { title: "Client", value: "Studio Archstone" },
-    { title: "Year", value: "2024" },
+    { title: "Client", value: "minihome" },
+    { title: "Year", value: "2026" },
     { title: "Role", value: "Design & Development" },
 ]
 

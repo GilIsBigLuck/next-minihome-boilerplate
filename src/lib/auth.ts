@@ -1,5 +1,4 @@
 import { NextAuthOptions } from "next-auth";
-import { PrismaAdapter } from "@auth/prisma-adapter";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
@@ -7,7 +6,7 @@ import bcrypt from "bcryptjs";
 import { prisma } from "./db";
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma) as NextAuthOptions["adapter"],
+  // JWT 전략 사용 (DB 세션 테이블 불필요)
   providers: [
     CredentialsProvider({
       name: "credentials",
@@ -24,13 +23,22 @@ export const authOptions: NextAuthOptions = {
           where: { email: credentials.email },
         });
 
-        if (!user || !user.password) {
+        if (!user || !user.passwordHash) {
           throw new Error("Invalid credentials");
+        }
+
+        // 계정 활성화 및 승인 여부 확인
+        if (!user.isActive) {
+          throw new Error("Account is deactivated");
+        }
+
+        if (!user.isApproved) {
+          throw new Error("Account is not approved yet");
         }
 
         const isPasswordValid = await bcrypt.compare(
           credentials.password,
-          user.password
+          user.passwordHash
         );
 
         if (!isPasswordValid) {
@@ -38,11 +46,11 @@ export const authOptions: NextAuthOptions = {
         }
 
         return {
-          id: user.id,
+          id: String(user.id),
           email: user.email,
-          name: user.name,
-          image: user.image,
-          role: user.role,
+          name: user.displayName || user.username,
+          username: user.username,
+          isMaster: user.isMaster,
         };
       },
     }),
@@ -68,20 +76,21 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
-    // signUp: "/register", // NextAuth doesn't have built-in signup page
   },
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
-        token.role = user.role;
+        token.username = user.username;
+        token.isMaster = user.isMaster;
       }
       return token;
     },
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.id as string;
-        session.user.role = token.role as string;
+        session.user.username = token.username as string;
+        session.user.isMaster = token.isMaster as boolean;
       }
       return session;
     },

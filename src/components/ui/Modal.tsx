@@ -83,9 +83,11 @@ function Modal({
                     {children}
                 </div>
                 <div className={modalFooterStyles()}>
-                    <Button variant="ghost" onClick={onClose}>
-                        {cancelText}
-                    </Button>
+                    {cancelText && (
+                        <Button variant="ghost" onClick={onClose}>
+                            {cancelText}
+                        </Button>
+                    )}
                     {onConfirm && (
                         <Button variant="primary" onClick={onConfirm}>
                             {confirmText}

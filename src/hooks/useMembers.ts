@@ -9,12 +9,13 @@ export interface Member {
   position: string | null;
   bio: string | null;
   image: string | null;
-  userId: string;
+  userId: number;
   createdAt: string;
   updatedAt: string;
   user: {
-    id: string;
-    name: string | null;
+    id: number;
+    username: string;
+    displayName: string | null;
     email: string;
   };
 }

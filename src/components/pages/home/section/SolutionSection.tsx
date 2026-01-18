@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 const solutionSectionStyles = cva([
-    "max-w-layout-md mx-auto px-6 py-24",
+    "max-w-layout-sm mx-auto px-6 py-24",
 ])
 
 const solutionSectionInnerStyles = cva([
@@ -37,7 +37,7 @@ interface SolutionContentProps {
 const solutionContent: SolutionContentProps = {
     title: "The Solution",
     description: "We developed a modular grid system inspired by architectural floor plans. This grid serves as the foundation for everything from the responsive website to the physical construction site hoardings.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCMh5dOciATcGbDEwTNQbOYnlp9nLh4yN431hhaPDrF5oiV3KAfhQrcUCG1ijGI9DtK4f5tmy2uIicquElDJy7BZqIXroZdTwwyJObNopHHCDnh0rl491hIb8HPv2cp6WXIg9NJtyuzBqo7CJLFYsz8ZVRxI-fYssCIWUgcs_e_KkiSWD8f4Dt1nICfNd7Zi1cRc9X_PYw8HOJAhZkrC2iknbZlRrr9dXKVr0_50Fi3ELeeJz-0lEWWGJ6QY8FsxyugZJVhhkjhSCvU"
+    image: "/dummy/logan-voss-3RevGUpbUXI-unsplash.jpg"
 }
 
 export default function SolutionSection() {

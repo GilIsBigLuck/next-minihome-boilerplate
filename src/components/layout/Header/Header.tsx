@@ -4,7 +4,7 @@ import { cva } from "class-variance-authority";
 // 헤더 스타일
 const headerStyles = cva([
   "fixed top-0 left-0 right-0 z-header bg-bg-light/80", 
-  "backdrop-blur-md border-b border-primary/10",
+  "backdrop-blur-md border-b border-primary/10  px-6 md:px-10",
 ])
 
 // 헤더 내부 스타일

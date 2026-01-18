@@ -13,7 +13,8 @@ export async function GET() {
         user: {
           select: {
             id: true,
-            name: true,
+            username: true,
+            displayName: true,
             email: true,
           },
         },
@@ -61,13 +62,14 @@ export async function POST(request: Request) {
         position,
         bio,
         image: image || null,
-        userId: session.user.id,
+        userId: parseInt(session.user.id, 10),
       },
       include: {
         user: {
           select: {
             id: true,
-            name: true,
+            username: true,
+            displayName: true,
             email: true,
           },
         },

@@ -19,7 +19,8 @@ export async function GET(request: Request, { params }: RouteParams) {
         user: {
           select: {
             id: true,
-            name: true,
+            username: true,
+            displayName: true,
             email: true,
           },
         },
@@ -43,7 +44,7 @@ export async function GET(request: Request, { params }: RouteParams) {
   }
 }
 
-// PUT /api/members/[id] - Update a member (authenticated, owner only)
+// PUT /api/members/[id] - Update a member (authenticated, owner or master only)
 export async function PUT(request: Request, { params }: RouteParams) {
   try {
     const session = await getServerSession(authOptions);
@@ -69,8 +70,9 @@ export async function PUT(request: Request, { params }: RouteParams) {
       );
     }
 
-    // Check ownership (or admin)
-    if (existingMember.userId !== session.user.id && session.user.role !== "ADMIN") {
+    // Check ownership (or master)
+    const userId = parseInt(session.user.id, 10);
+    if (existingMember.userId !== userId && !session.user.isMaster) {
       return NextResponse.json(
         { error: "Forbidden" },
         { status: 403 }
@@ -98,7 +100,8 @@ export async function PUT(request: Request, { params }: RouteParams) {
         user: {
           select: {
             id: true,
-            name: true,
+            username: true,
+            displayName: true,
             email: true,
           },
         },
@@ -115,7 +118,7 @@ export async function PUT(request: Request, { params }: RouteParams) {
   }
 }
 
-// DELETE /api/members/[id] - Delete a member (authenticated, owner only)
+// DELETE /api/members/[id] - Delete a member (authenticated, owner or master only)
 export async function DELETE(request: Request, { params }: RouteParams) {
   try {
     const session = await getServerSession(authOptions);
@@ -141,8 +144,9 @@ export async function DELETE(request: Request, { params }: RouteParams) {
       );
     }
 
-    // Check ownership (or admin)
-    if (existingMember.userId !== session.user.id && session.user.role !== "ADMIN") {
+    // Check ownership (or master)
+    const userId = parseInt(session.user.id, 10);
+    if (existingMember.userId !== userId && !session.user.isMaster) {
       return NextResponse.json(
         { error: "Forbidden" },
         { status: 403 }

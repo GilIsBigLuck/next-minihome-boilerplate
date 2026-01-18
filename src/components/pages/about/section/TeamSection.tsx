@@ -128,7 +128,7 @@ const teamContent: TeamContentProps = {
 
 export default function TeamSection() {
     return (
-        <section className={teamSectionStyles()}>
+        <section id="meet-the-visionaries" className={teamSectionStyles()}>
             <div className={teamInnerStyles()}>
                 <div className={teamHeaderStyles()}>
                     <div className={teamHeaderContentStyles()}>

@@ -235,7 +235,7 @@ function InstagramIcon() {
 
 export default function ContactFormSection() {
     return (
-        <section className={contactSectionStyles()}>
+        <section id="contact-form" className={contactSectionStyles()}>
             {/* Contact Form */}
             <div className={formContainerStyles()}>
                 <div className={formCardStyles()}>

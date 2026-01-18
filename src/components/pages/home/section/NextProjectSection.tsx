@@ -44,8 +44,8 @@ interface NextProjectContentProps {
 const nextProjectContent: NextProjectContentProps = {
     label: "Next Project",
     title: "Ethos Workspace Systems",
-    href: "#",
-    backgroundImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuC0g-IRZS60uc7XkSWl5beuQWc_K89FQeFjPlIFHM7ttmah6SBcygmklgccpuiltCKa8CiPb7sVj3o_A1Y7rls5q1OaZ7MMOLy2sugIzAKMiIlx4SmN9wxJujCRwiXPQFi7CpYqtI7_VEBP6E5RlgP0yRGdbjiZxnLepg01SWyOzETPcjqjdmGEaqod5OvAJn5HoWfoE65Up7snKEbMjljZRwU0NtFH_KGmmg7mHnyDq5m6DEtiYgZPIwCTg5hjPT9BoPJhRpnhybwK"
+    href: "/style-guide",
+    backgroundImage: "/dummy/logan-voss-cfEoiMkUVXU-unsplash.jpg"
 }
 
 export default function NextProjectSection() {

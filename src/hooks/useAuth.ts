@@ -3,7 +3,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { LoginInput, RegisterInput } from "@/lib/validations";
+import { LoginInput } from "@/lib/validations";
 
 // Login mutation
 export function useLogin() {
@@ -24,38 +24,6 @@ export function useLogin() {
       return result;
     },
     onSuccess: () => {
-      router.push("/");
-      router.refresh();
-    },
-  });
-}
-
-// Register mutation
-export function useRegister() {
-  const router = useRouter();
-
-  return useMutation({
-    mutationFn: async (data: RegisterInput) => {
-      const response = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || "Registration failed");
-      }
-
-      return response.json();
-    },
-    onSuccess: async (_, variables) => {
-      // Auto login after registration
-      await signIn("credentials", {
-        email: variables.email,
-        password: variables.password,
-        redirect: false,
-      });
       router.push("/");
       router.refresh();
     },

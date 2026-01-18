@@ -51,8 +51,8 @@ interface ImageryContentProps {
 }
 
 const imageryContent: ImageryContentProps = {
-    tallImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuDxYj7qstZcurQRxW1cr5Tv58MOeXIfmU86jpmvcbX52oqWjvcwMZPiYe-ORIKPZGo2kog_PjZUZhAWb0bK8qrofr5pm8C8rCkuhDsbM4I-RuroCmWHyMk8Cb9S3-k2L8kaD9T6moMtK8wNjGSPAikihyRAfMgJuIVFTuo9LD9kF7LrnWghw8nVXh-q6mnqSCdLUO2yFLbhubnnoJeloVfW0F1Q5HJkd6XnK076FRpNiKkZFikS078tzKpnW2FZZ_NKmPPU1v9JY-uC",
-    squareImage: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIf87T-awEI0Io1vmpsMtBXU41rufIKWBcUasiMMtZaAE7z9aO7p2ppCh8kkocIiSoTcfNxgIK1rUx5X7nzrH2ygHG5iVK6W54OlKf-rF84C8dQ6m9gEMwWNPgzyd4MIqZ2ZXqPQbvvQ2f03O4MM3vIN2FwZSkjILWNgJp-85d-RiYwd8HpxmrRP0PGWn0X4Ji0a7jZ66BsxU-gktJ88abmiVe6y74AzP1CtQE5noPKoISi1CTxFI1Aq4cuNwImPpKBpp7APKvbBGk",
+    tallImage: "/dummy/david-maier-nSHEKTHRm0U-unsplash.jpg",
+    squareImage: "/dummy/pawel-czerwinski-IQHxLsy-VgM-unsplash.jpg",
     quote: {
         text: "The new identity doesn't just look better; it feels like the soul of our studio finally has a face.",
         author: "— Marcus Thorne, Principal Architect"

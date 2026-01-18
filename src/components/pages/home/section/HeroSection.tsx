@@ -40,7 +40,7 @@ export default function HeroSection() {
 
                 <div 
                     className={heroBannerImageStyles()} 
-                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdIzp8McTRUFEBgre3EyWe7UhTMJghqRvk2AJ6CK_pdNWHUKogwqc-lEw_quoJOzpMteZr-sejkKU00GLX_6FEg-OpXtjlz9_L5HQtAiAz_Mgtg0n3VqrI0L0qCsqZMzAT0LNWJBxfDwd2IENcqdu9Apxe_T8rnhyuiHgeRQCHvlqKcnMEN1fngv3UN0wicPIq21Ngb8MTKw9fQ-agqrsraNuwd4_ylDvCCHvk5g34tANGasWZhYBXs_wgWhtQolYsJ_9FqtT7seYF')" }}>
+                    style={{ backgroundImage: "url('/dummy/fons-heijnsbroek-uhWEGjTfStg-unsplash.jpg')" }}>
                 </div>
 
                 <div className={heroBannerContentStyles()}>

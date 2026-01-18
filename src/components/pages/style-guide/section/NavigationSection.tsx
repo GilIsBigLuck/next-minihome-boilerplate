@@ -89,7 +89,7 @@ export default function NavigationSection() {
     const [currentPage, setCurrentPage] = useState(1);
 
     return (
-        <section className={sectionStyles()}>
+        <section id="navigation" className={sectionStyles()}>
             <div className={sectionHeaderStyles()}>
                 <LayersIcon />
                 <h2 className={sectionTitleStyles()}>Navigation &amp; Modal</h2>
