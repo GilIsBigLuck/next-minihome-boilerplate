@@ -1,0 +1,247 @@
+{
+  "common": {
+    "about": "About",
+    "styleGuide": "Style Guide",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "clearSections": "Clear Sections"
+  },
+  "header": {
+    "title": "Clear Sections"
+  },
+  "footer": {
+    "brandName": "Clear Sections",
+    "description": "A boutique design partner for architectural firms and real estate developers looking to stand out in a crowded urban landscape.",
+    "copyright": "© {year} Clear Sections. All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "nav": {
+      "about": {
+        "title": "About",
+        "journeyToClarity": "The Journey to Clarity",
+        "corePrinciples": "Core Principles",
+        "meetTheVisionaries": "Meet the Visionaries"
+      },
+      "styleGuide": {
+        "title": "Style Guide",
+        "typography": "Typography",
+        "colors": "Colors",
+        "buttons": "Buttons"
+      },
+      "contact": {
+        "title": "Contact",
+        "contactForm": "Contact Form",
+        "map": "Map"
+      }
+    },
+    "privacyPolicyContent": "At Clear Sections, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.\n\nInformation We Collect:\n- Personal information you provide (name, email, contact details)\n- Usage data and analytics information\n- Cookies and tracking technologies\n\nHow We Use Your Information:\n- To provide and maintain our services\n- To notify you about changes to our services\n- To provide customer support\n- To gather analysis or valuable information\n\nData Protection:\nWe implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.\n\nYour Rights:\nYou have the right to access, update, or delete your personal information at any time. Please contact us if you wish to exercise these rights.",
+    "termsOfServiceContent": "Welcome to Clear Sections. By accessing or using our website, you agree to be bound by these Terms of Service.\n\nUse License:\nPermission is granted to temporarily access the materials on Clear Sections' website for personal, non-commercial transitory viewing only.\n\nRestrictions:\n- You may not modify or copy the materials\n- You may not use the materials for any commercial purpose\n- You may not remove any copyright or other proprietary notations\n\nDisclaimer:\nThe materials on Clear Sections' website are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim all other warranties.\n\nLimitations:\nIn no event shall Clear Sections or its suppliers be liable for any damages arising out of the use or inability to use the materials on our website.\n\nRevisions:\nClear Sections may revise these terms of service at any time without notice. By using this website you are agreeing to be bound by the then current version of these terms of service."
+  },
+  "home": {
+    "hero": {
+      "subtitle": "Sub Title",
+      "title": "mini's Clear Sections"
+    },
+    "challenge": {
+      "title": "Section Title",
+      "paragraphs": [
+        "Studio Archstone sought to redefine the visual language of urban redevelopment. Their existing brand felt rooted in the past, failing to communicate the sustainable and human-centric approach of their modern architectural projects.",
+        "We were tasked with creating a comprehensive identity system that bridges the gap between industrial heritage and future-focused innovation, ensuring consistency across physical sites and digital touchpoints."
+      ]
+    },
+    "solution": {
+      "title": "The Solution",
+      "description": "We developed a modular grid system inspired by architectural floor plans. This grid serves as the foundation for everything from the responsive website to the physical construction site hoardings."
+    },
+    "results": {
+      "inquiryIncrease": "Inquiry Increase",
+      "designAwards": "Design Awards",
+      "globalLocations": "Global Locations"
+    },
+    "nextProject": {
+      "title": "Next Project",
+      "description": "Explore our latest work"
+    }
+  },
+  "about": {
+    "hero": {
+      "badge": "Our Purpose",
+      "title": "Redefining {clarity}",
+      "clarity": "Clarity",
+      "description": "Empowering businesses through structured innovation and transparent communication. We believe that the best solutions are born from radical honesty and elegant simplicity."
+    },
+    "story": {
+      "journeyToClarity": {
+        "title": "The Journey to Clarity",
+        "paragraphs": [
+          "Founded in 2014, Clear Sections began as a three-person collective in a shared workspace. Our mission was simple: eliminate the noise that prevents great ideas from scaling.",
+          "A decade later, we've evolved into an industry leader, helping Fortune 500 companies and startups alike find their true north through structured innovation frameworks."
+        ]
+      },
+      "continuousEvolution": {
+        "title": "Continuous Evolution",
+        "paragraphs": [
+          "We don't just adapt to change; we define it. Our methodology has been refined through thousands of projects, ensuring that \"clarity\" isn't just a buzzword, but a measurable outcome."
+        ]
+      }
+    },
+    "values": {
+      "title": "Core Principles",
+      "subtitle": "The bedrock of our culture and the compass for every decision we make.",
+      "integrity": {
+        "title": "Integrity",
+        "description": "Doing what is right, even when no one is watching. We value honesty over convenience and partnership over profits."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "Pushing the boundaries of what's possible. We embrace failure as a necessary stepping stone toward groundbreaking discoveries."
+      },
+      "empathy": {
+        "title": "Empathy",
+        "description": "Putting people at the heart of our decisions. We listen before we build, ensuring our solutions solve real human problems."
+      }
+    },
+    "team": {
+      "title": "Meet the Visionaries",
+      "subtitle": "A diverse collective of thinkers, makers, and problem-solvers.",
+      "viewAllCareers": "View All Careers",
+      "roles": {
+        "ceo": "Chief Executive Officer",
+        "cto": "Chief Technology Officer",
+        "headOfDesign": "Head of Design"
+      }
+    },
+    "cta": {
+      "title": "Ready to find your clarity?",
+      "startProject": "Start Your Project",
+      "talkToExpert": "Talk to an Expert"
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Let's build something {remarkable} together.",
+      "remarkable": "remarkable",
+      "description": "Have a specific challenge or just want to explore how we can work together? Our team is ready to listen and help you scale."
+    },
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "workEmail": "Work Email",
+      "workEmailPlaceholder": "john@company.com",
+      "inquiryType": "Inquiry Type",
+      "inquiryTypePlaceholder": "Select a service category",
+      "inquiryTypes": {
+        "generalConsulting": "General Consulting",
+        "enterpriseSolutions": "Enterprise Solutions",
+        "technicalSupport": "Technical Support",
+        "billingInquiry": "Billing Inquiry"
+      },
+      "message": "Message",
+      "messagePlaceholder": "Tell us about your project or questions...",
+      "sendMessage": "Send Message"
+    },
+    "info": {
+      "headquarters": {
+        "title": "Our Headquarters",
+        "name": "San Francisco Office",
+        "address": [
+          "1200 Market Street, Suite 400",
+          "San Francisco, CA 94102",
+          "United States"
+        ]
+      },
+      "directContact": {
+        "title": "Direct Contact",
+        "email": "hello@clearsections.io",
+        "phone": "+1 (415) 555-0123"
+      },
+      "social": {
+        "title": "Follow Our Progress"
+      },
+      "testimonial": {
+        "text": "Clear Sections redefined our operational workflow in under three months. Their support team is exceptionally responsive.",
+        "author": "— Sarah Jenkins, CTO at NexaFlow"
+      }
+    }
+  },
+  "login": {
+    "title": "Welcome back",
+    "subtitle": "Sign in to your Clear Sections account to continue.",
+    "emailAddress": "Email Address",
+    "emailPlaceholder": "name@company.com",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot password?",
+    "keepSignedIn": "Keep me signed in",
+    "logIn": "Log In",
+    "loggingIn": "Logging in...",
+    "orContinueWith": "Or continue with",
+    "dontHaveAccount": "Don't have an account?",
+    "signUp": "Sign Up"
+  },
+  "register": {
+    "title": "Registration",
+    "subtitle": "Account registration is handled by the administrator. Please contact the administrator for account registration.",
+    "goToLogin": "Go to Login",
+    "alreadyHaveAccount": "Already have an account?",
+    "logIn": "Log In"
+  },
+  "styleGuide": {
+    "hero": {
+      "title": "Style Guide",
+      "version": "Version 1.0",
+      "description": "A comprehensive guide to our design system, components, and visual language."
+    },
+    "typography": {
+      "title": "Typography"
+    },
+    "colors": {
+      "title": "Color Palette"
+    },
+    "buttons": {
+      "title": "Buttons Matrix"
+    },
+    "forms": {
+      "title": "Forms",
+      "defaultInput": "Default Input",
+      "defaultInputPlaceholder": "Your name",
+      "errorState": "Error State",
+      "errorMessage": "Please enter a valid email address.",
+      "searchInput": "Search Input",
+      "searchPlaceholder": "Search...",
+      "urlInput": "URL Input",
+      "urlPlaceholder": "yoursite.com",
+      "selectOption": "Select Option",
+      "selectPlaceholder": "Choose an option",
+      "option1": "Option 1",
+      "option2": "Option 2",
+      "option3": "Option 3",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "fileUpload": "File Upload",
+      "fileUploadHint": "PNG, JPG, PDF up to 10MB"
+    },
+    "navigation": {
+      "title": "Navigation & Modal"
+    }
+  },
+  "team": {
+    "backNavigation": "Back to Team",
+    "expertise": {
+      "title": "Expertise"
+    },
+    "projects": {
+      "title": "Notable Projects"
+    }
+  },
+  "ui": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  }
+}
