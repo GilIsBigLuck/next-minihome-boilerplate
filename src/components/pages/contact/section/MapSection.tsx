@@ -2,6 +2,7 @@
 
 import { cva } from "class-variance-authority";
 import { useEffect, useRef, useState } from "react";
+import { clientEnv } from "@/lib/env";
 
 const mapSectionStyles = cva([
     "w-full relative h-[450px] overflow-hidden",
@@ -51,8 +52,8 @@ export default function MapSection() {
     const [mapError, setMapError] = useState<string | null>(null);
 
     useEffect(() => {
-        // 네이버 지도 API Client ID (환경변수에서 가져오기)
-        const NAVER_MAP_CLIENT_ID = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
+        // 네이버 지도 API Client ID (타입 안전한 환경변수 사용)
+        const NAVER_MAP_CLIENT_ID = clientEnv.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
 
         if (!NAVER_MAP_CLIENT_ID) {
             setMapError("네이버 지도 API 키가 설정되지 않았습니다.");
