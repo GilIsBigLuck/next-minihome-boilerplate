@@ -3,11 +3,13 @@ import { z } from "zod";
 /**
  * 클라이언트 사이드 환경변수 스키마
  * NEXT_PUBLIC_* 접두사가 붙은 변수만 클라이언트에서 접근 가능
+ * 클라이언트에서는 기본값을 제공하여 검증 실패 시에도 동작하도록 처리
  */
 const clientSchema = z.object({
   NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: z
     .string()
-    .min(1, "네이버 지도 API Client ID가 필요합니다"),
+    .default("")
+    .describe("네이버 지도 API Client ID"),
 });
 
 /**
@@ -84,27 +86,20 @@ function getEnv(): Env {
 
 /**
  * 클라이언트 환경변수 파싱 및 검증
+ * 클라이언트에서는 항상 성공하도록 기본값 제공
  */
 function getClientEnv(): ClientEnv {
-  const parsed = clientSchema.safeParse({
-    NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID,
+  // 기본값을 제공하여 검증이 항상 성공하도록 처리
+  const parsed = clientSchema.parse({
+    NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID || "",
   });
 
-  if (!parsed.success) {
-    console.error("❌ 클라이언트 환경변수 검증 실패:\n");
-    parsed.error.issues.forEach((issue) => {
-      const path = issue.path.join(".");
-      console.error(`  - ${path}: ${issue.message}`);
-    });
-    console.error("\nNEXT_PUBLIC_* 환경변수를 확인해주세요.\n");
+  // 개발 환경에서만 환경변수 누락 경고
+  if (!process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID && process.env.NODE_ENV === "development") {
+    console.warn("⚠️ NEXT_PUBLIC_NAVER_MAP_CLIENT_ID가 설정되지 않았습니다. 네이버 지도 기능이 동작하지 않을 수 있습니다.");
   }
 
-  // 클라이언트에서는 에러를 throw하지 않고 기본값 반환
-  return parsed.success
-    ? parsed.data
-    : {
-        NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: "",
-      };
+  return parsed;
 }
 
 /**
