@@ -17,6 +17,12 @@ const clientSchema = z.object({
  * 서버에서만 접근 가능한 민감한 정보
  */
 const serverSchema = z.object({
+  // 네이버 지도 API (서버 사이드 API 호출 시 사용)
+  NAVER_MAP_CLIENT_SECRET: z
+    .string()
+    .optional()
+    .describe("네이버 지도 API Client Secret (서버 사이드 API 호출 시 필요)"),
+
   // NextAuth 관련
   NEXTAUTH_URL: z
     .string()
@@ -56,6 +62,7 @@ function getEnv(): Env {
     NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID,
 
     // 서버 환경변수
+    NAVER_MAP_CLIENT_SECRET: process.env.NAVER_MAP_CLIENT_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     DATABASE_URL: process.env.DATABASE_URL,
@@ -75,6 +82,7 @@ function getEnv(): Env {
     // 빌드 실패를 방지하기 위해 기본값 반환
     return {
       NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID || "",
+      NAVER_MAP_CLIENT_SECRET: process.env.NAVER_MAP_CLIENT_SECRET,
       NEXTAUTH_URL: process.env.NEXTAUTH_URL,
       NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
       DATABASE_URL: process.env.DATABASE_URL,
@@ -89,14 +97,21 @@ function getEnv(): Env {
  * 클라이언트에서는 항상 성공하도록 기본값 제공
  */
 function getClientEnv(): ClientEnv {
+  // 실제 환경변수 값 확인 (디버깅용)
+  const envValue = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
+  
   // 기본값을 제공하여 검증이 항상 성공하도록 처리
   const parsed = clientSchema.parse({
-    NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID || "",
+    NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: envValue || "",
   });
 
-  // 개발 환경에서만 환경변수 누락 경고
-  if (!process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID && process.env.NODE_ENV === "development") {
-    console.warn("⚠️ NEXT_PUBLIC_NAVER_MAP_CLIENT_ID가 설정되지 않았습니다. 네이버 지도 기능이 동작하지 않을 수 있습니다.");
+  // 환경변수 누락 시 경고 (개발/프로덕션 모두)
+  if (!envValue) {
+    console.warn("⚠️ NEXT_PUBLIC_NAVER_MAP_CLIENT_ID가 설정되지 않았습니다.");
+    console.warn("   Cloudflare Pages의 경우:");
+    console.warn("   1. 프로젝트 → Settings → Environment Variables");
+    console.warn("   2. Production 환경에 NEXT_PUBLIC_NAVER_MAP_CLIENT_ID 추가");
+    console.warn("   3. 빌드 재실행 필요");
   }
 
   return parsed;
