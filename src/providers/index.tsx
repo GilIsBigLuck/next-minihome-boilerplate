@@ -2,7 +2,7 @@
 
 import { ReactNode } from "react";
 import QueryProvider from "./QueryProvider";
-import AuthProvider from "./AuthProvider";
+// import AuthProvider from "./AuthProvider"; // API 비활성화로 인해 주석 처리
 
 interface ProvidersProps {
   children: ReactNode;
@@ -10,10 +10,11 @@ interface ProvidersProps {
 
 export default function Providers({ children }: ProvidersProps) {
   return (
-    <AuthProvider>
+    // <AuthProvider>
       <QueryProvider>{children}</QueryProvider>
-    </AuthProvider>
+    // </AuthProvider>
   );
 }
 
-export { QueryProvider, AuthProvider };
+export { QueryProvider };
+// export { QueryProvider, AuthProvider };

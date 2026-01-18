@@ -1,4 +1,6 @@
 import { cva } from "class-variance-authority";
+import Image from "next/image";
+import { getBlurDataURL } from "@/lib/plaiceholder";
 
 const solutionSectionStyles = cva([
     "max-w-layout-sm mx-auto px-6 py-24",
@@ -21,11 +23,11 @@ const solutionDescriptionStyles = cva([
 ])
 
 const solutionImageContainerStyles = cva([
-    "w-full aspect-video rounded-xl overflow-hidden shadow-2xl",
+    "w-full aspect-video rounded-xl overflow-hidden shadow-2xl relative",
 ])
 
 const solutionImageStyles = cva([
-    "w-full h-full bg-cover bg-center",
+    "w-full h-full object-cover",
 ])
 
 interface SolutionContentProps {
@@ -40,11 +42,12 @@ const solutionContent: SolutionContentProps = {
     image: "/dummy/logan-voss-3RevGUpbUXI-unsplash.jpg"
 }
 
-export default function SolutionSection() {
+export default async function SolutionSection() {
+    const blurDataURL = await getBlurDataURL(solutionContent.image);
+
     return (
         <section className={solutionSectionStyles()}>
             <div className={solutionSectionInnerStyles()}>
-
                 <div className={solutionTextBlockStyles()}>
                     <h2 className={solutionTitleStyles()}>
                         {solutionContent.title}
@@ -53,14 +56,16 @@ export default function SolutionSection() {
                         {solutionContent.description}
                     </p>
                 </div>
-
                 <div className={solutionImageContainerStyles()}>
-                    <div
+                    <Image
+                        src={solutionContent.image}
+                        alt="Solution Image"
+                        fill
                         className={solutionImageStyles()}
-                        style={{ backgroundImage: `url("${solutionContent.image}")` }}
+                        placeholder="blur"
+                        blurDataURL={blurDataURL}
                     />
                 </div>
-
             </div>
         </section>
     )

@@ -1,5 +1,7 @@
 import { cva } from "class-variance-authority";
 import Link from "next/link";
+import Image from "next/image";
+import { getBlurDataURL } from "@/lib/plaiceholder";
 
 const nextProjectSectionStyles = cva([
     "w-full mt-24",
@@ -10,7 +12,7 @@ const nextProjectLinkStyles = cva([
 ])
 
 const nextProjectBgImageStyles = cva([
-    "absolute inset-0 bg-cover bg-center opacity-40",
+    "absolute inset-0 object-cover opacity-40",
     "group-hover:opacity-60 transition-opacity duration-700",
 ])
 
@@ -48,18 +50,21 @@ const nextProjectContent: NextProjectContentProps = {
     backgroundImage: "/dummy/logan-voss-cfEoiMkUVXU-unsplash.jpg"
 }
 
-export default function NextProjectSection() {
+export default async function NextProjectSection() {
+    const blurDataURL = await getBlurDataURL(nextProjectContent.backgroundImage);
+
     return (
         <section className={nextProjectSectionStyles()}>
             <Link href={nextProjectContent.href} className={nextProjectLinkStyles()}>
-
-                <div
+                <Image
+                    src={nextProjectContent.backgroundImage}
+                    alt="Next Project Background"
+                    fill
                     className={nextProjectBgImageStyles()}
-                    style={{ backgroundImage: `url("${nextProjectContent.backgroundImage}")` }}
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
                 />
-
                 <div className={nextProjectOverlayStyles()} />
-
                 <div className={nextProjectContentStyles()}>
                     <span className={nextProjectLabelStyles()}>
                         {nextProjectContent.label}
@@ -81,7 +86,6 @@ export default function NextProjectSection() {
                         {nextProjectContent.title}
                     </h2>
                 </div>
-
             </Link>
         </section>
     )

@@ -1,4 +1,6 @@
 import { cva } from "class-variance-authority";
+import Image from "next/image";
+import { getBlurDataURL } from "@/lib/plaiceholder";
 
 const heroSectionStyles = cva([
     "w-full px-4 py-8",
@@ -31,20 +33,29 @@ const heroBannerTitleStyles = cva([
     "md:text-7xl"
 ])
 
-export default function HeroSection() {
+const heroImagePath = "/dummy/fons-heijnsbroek-uhWEGjTfStg-unsplash.jpg";
+
+export default async function HeroSection() {
+    const blurDataURL = await getBlurDataURL(heroImagePath);
+
     return (
     <section className={heroSectionStyles()}>
         <div className={heroSectionInnerStyles()}>
-
             <div className={heroBannerStyles()}>
-
-                <div 
-                    className={heroBannerImageStyles()} 
-                    style={{ backgroundImage: "url('/dummy/fons-heijnsbroek-uhWEGjTfStg-unsplash.jpg')" }}>
-                </div>
-
+                    <div 
+                        className={heroBannerImageStyles()} 
+                    >
+                        <Image 
+                            src={heroImagePath} 
+                            alt="Hero Banner Image" 
+                            fill 
+                            className="object-cover"
+                            placeholder="blur"
+                            blurDataURL={blurDataURL}
+                            priority
+                        />
+                    </div>
                 <div className={heroBannerContentStyles()}>
-
                     <p className={heroBannerSubtitleStyles()}>
                         Sub Title
                     </p>
@@ -52,9 +63,7 @@ export default function HeroSection() {
                         mini&apos;s <br/> Clear Sections
                     </h2>
                 </div>
-
             </div>
-
         </div>
     </section>
     )

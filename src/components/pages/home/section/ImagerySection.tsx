@@ -1,4 +1,6 @@
 import { cva } from "class-variance-authority";
+import Image from "next/image";
+import { getBlurDataURL } from "@/lib/plaiceholder";
 
 const imagerySectionStyles = cva([
     "w-full px-4 py-12",
@@ -14,11 +16,11 @@ const imagerySectionGridStyles = cva([
 ])
 
 const imageryTallImageStyles = cva([
-    "aspect-[4/5] rounded-xl overflow-hidden shadow-lg bg-gray-100",
+    "aspect-[4/5] rounded-xl overflow-hidden shadow-lg bg-gray-100 relative",
 ])
 
 const imageryImageStyles = cva([
-    "w-full h-full bg-cover bg-center",
+    "w-full h-full object-cover",
 ])
 
 const imageryRightColumnStyles = cva([
@@ -26,7 +28,7 @@ const imageryRightColumnStyles = cva([
 ])
 
 const imagerySquareImageStyles = cva([
-    "aspect-square rounded-xl overflow-hidden shadow-lg bg-gray-100",
+    "aspect-square rounded-xl overflow-hidden shadow-lg bg-gray-100 relative",
 ])
 
 const imageryQuoteBlockStyles = cva([
@@ -59,24 +61,33 @@ const imageryContent: ImageryContentProps = {
     }
 }
 
-export default function ImagerySection() {
+export default async function ImagerySection() {
+    const tallBlur = await getBlurDataURL(imageryContent.tallImage);
+    const squareBlur = await getBlurDataURL(imageryContent.squareImage);
+
     return (
         <section className={imagerySectionStyles()}>
             <div className={imagerySectionInnerStyles()}>
                 <div className={imagerySectionGridStyles()}>
-
                     <div className={imageryTallImageStyles()}>
-                        <div
+                        <Image
+                            src={imageryContent.tallImage}
+                            alt="Tall Image"
+                            fill
                             className={imageryImageStyles()}
-                            style={{ backgroundImage: `url("${imageryContent.tallImage}")` }}
+                            placeholder="blur"
+                            blurDataURL={tallBlur}
                         />
                     </div>
-
                     <div className={imageryRightColumnStyles()}>
                         <div className={imagerySquareImageStyles()}>
-                            <div
+                            <Image
+                                src={imageryContent.squareImage}
+                                alt="Square Image"
+                                fill
                                 className={imageryImageStyles()}
-                                style={{ backgroundImage: `url("${imageryContent.squareImage}")` }}
+                                placeholder="blur"
+                                blurDataURL={squareBlur}
                             />
                         </div>
                         <div className={imageryQuoteBlockStyles()}>
@@ -88,7 +99,6 @@ export default function ImagerySection() {
                             </p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

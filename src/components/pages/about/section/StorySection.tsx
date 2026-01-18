@@ -1,5 +1,6 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
+import { getBlurDataURL } from "@/lib/plaiceholder";
 
 const storySectionStyles = cva([
     "px-6 py-20 bg-white dark:bg-[#1a1f1f]",
@@ -105,7 +106,11 @@ const storyBlocks: StoryBlockProps[] = [
     }
 ]
 
-function StoryBlock({ title, paragraphs, image, imageAlt, reverse, teamAvatars, teamCount }: StoryBlockProps) {
+interface StoryBlockWithBlurProps extends StoryBlockProps {
+    blurDataURL?: string;
+}
+
+function StoryBlock({ title, paragraphs, image, imageAlt, reverse, teamAvatars, teamCount, blurDataURL }: StoryBlockWithBlurProps) {
     const containerClass = reverse ? storyBlockReverseStyles() : storyBlockStyles();
 
     return (
@@ -145,6 +150,8 @@ function StoryBlock({ title, paragraphs, image, imageAlt, reverse, teamAvatars, 
                         width={600}
                         height={400}
                         className={storyImageStyles()}
+                        placeholder={blurDataURL ? "blur" : "empty"}
+                        blurDataURL={blurDataURL}
                     />
                 </div>
             </div>
@@ -178,12 +185,19 @@ function StoryBlock({ title, paragraphs, image, imageAlt, reverse, teamAvatars, 
     )
 }
 
-export default function StorySection() {
+export default async function StorySection() {
+    const storyBlur1 = await getBlurDataURL(storyBlocks[0].image);
+    const storyBlur2 = await getBlurDataURL(storyBlocks[1].image);
+
     return (
         <section id="journey-to-clarity" className={storySectionStyles()}>
             <div className={storyInnerStyles()}>
                 {storyBlocks.map((block, index) => (
-                    <StoryBlock key={index} {...block} />
+                    <StoryBlock 
+                        key={index} 
+                        {...block} 
+                        blurDataURL={index === 0 ? storyBlur1 : storyBlur2}
+                    />
                 ))}
             </div>
         </section>
