@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const valuesSectionStyles = cva([
     "px-6 py-24 bg-bg-light",
@@ -51,36 +52,24 @@ interface ValueProps {
     description: string;
 }
 
-const values: ValueProps[] = [
-    {
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-            </svg>
-        ),
-        title: "Integrity",
-        description: "Doing what is right, even when no one is watching. We value honesty over convenience and partnership over profits."
-    },
-    {
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M9 18V5l12-2v13"/>
-                <circle cx="6" cy="18" r="3"/>
-                <circle cx="18" cy="16" r="3"/>
-            </svg>
-        ),
-        title: "Innovation",
-        description: "Pushing the boundaries of what's possible. We embrace failure as a necessary stepping stone toward groundbreaking discoveries."
-    },
-    {
-        icon: (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-            </svg>
-        ),
-        title: "Empathy",
-        description: "Putting people at the heart of our decisions. We listen before we build, ensuring our solutions solve real human problems."
-    }
+const valueIcons = [
+    (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+    ),
+    (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M9 18V5l12-2v13"/>
+            <circle cx="6" cy="18" r="3"/>
+            <circle cx="18" cy="16" r="3"/>
+        </svg>
+    ),
+    (
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+        </svg>
+    )
 ]
 
 function ValueCard({ icon, title, description }: ValueProps) {
@@ -95,23 +84,33 @@ function ValueCard({ icon, title, description }: ValueProps) {
     )
 }
 
-interface ValuesContentProps {
-    title: string;
-    subtitle: string;
-}
+export default async function ValuesSection() {
+    const t = await getTranslations("about.values");
+    
+    const values: ValueProps[] = [
+        {
+            icon: valueIcons[0],
+            title: t("integrity.title"),
+            description: t("integrity.description")
+        },
+        {
+            icon: valueIcons[1],
+            title: t("innovation.title"),
+            description: t("innovation.description")
+        },
+        {
+            icon: valueIcons[2],
+            title: t("empathy.title"),
+            description: t("empathy.description")
+        }
+    ]
 
-const valuesContent: ValuesContentProps = {
-    title: "Core Principles",
-    subtitle: "The bedrock of our culture and the compass for every decision we make."
-}
-
-export default function ValuesSection() {
     return (
         <section id="core-principles" className={valuesSectionStyles()}>
             <div className={valuesInnerStyles()}>
                 <div className={valuesHeaderStyles()}>
-                    <h2 className={valuesTitleStyles()}>{valuesContent.title}</h2>
-                    <p className={valuesSubtitleStyles()}>{valuesContent.subtitle}</p>
+                    <h2 className={valuesTitleStyles()}>{t("title")}</h2>
+                    <p className={valuesSubtitleStyles()}>{t("subtitle")}</p>
                 </div>
                 <div className={valuesGridStyles()}>
                     {values.map((value, index) => (

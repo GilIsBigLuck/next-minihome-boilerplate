@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const metadataSectionStyles = cva([
     "max-w-layout-md mx-auto px-6 py-12",
@@ -38,13 +39,15 @@ function MetadataItem({ title, value }: MetadataItemProps) {
     )
 }
 
-const metadataItems = [
-    { title: "Client", value: "minihome" },
-    { title: "Year", value: "2026" },
-    { title: "Role", value: "Design & Development" },
-]
+export default async function MetadataSection() {
+    const t = await getTranslations("home.metadata");
+    
+    const metadataItems = [
+        { title: t("titleClient"), value: t("client") },
+        { title: t("titleYear"), value: t("year") },
+        { title: t("titleRole"), value: t("role") },
+    ]
 
-export default function MetadataSection() {
     return (
     <section className={metadataSectionStyles()}>
         <div className={metadataSectionInnerStyles()}>

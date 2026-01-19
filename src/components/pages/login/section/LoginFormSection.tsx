@@ -4,6 +4,7 @@ import { cva } from "class-variance-authority";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 // import { signIn } from "next-auth/react";
 import { Input, Button, Checkbox } from "@/components/ui";
 import { useLogin } from "@/hooks";
@@ -96,6 +97,7 @@ const errorStyles = cva([
 
 export default function LoginFormSection() {
     const login = useLogin();
+    const t = useTranslations("login");
 
     const {
         register,
@@ -118,9 +120,9 @@ export default function LoginFormSection() {
         <section className={sectionStyles()}>
             <div className={containerStyles()}>
                 <div className={headerStyles()}>
-                    <h1 className={titleStyles()}>Welcome back</h1>
+                    <h1 className={titleStyles()}>{t("title")}</h1>
                     <p className={subtitleStyles()}>
-                        Sign in to your Clear Sections account to continue.
+                        {t("subtitle")}
                     </p>
                 </div>
 
@@ -133,30 +135,30 @@ export default function LoginFormSection() {
                         )}
 
                         <Input
-                            label="Email Address"
+                            label={t("emailAddress")}
                             type="email"
-                            placeholder="name@company.com"
+                            placeholder={t("emailPlaceholder")}
                             error={errors.email?.message}
                             {...register("email")}
                         />
 
                         <div>
                             <div className={passwordHeaderStyles()}>
-                                <label className="text-sm font-bold opacity-70">Password</label>
+                                <label className="text-sm font-bold opacity-70">{t("password")}</label>
                                 <Link href="#" className={forgotLinkStyles()}>
-                                    Forgot password?
+                                    {t("forgotPassword")}
                                 </Link>
                             </div>
                             <Input
                                 type="password"
-                                placeholder="Enter your password"
+                                placeholder={t("passwordPlaceholder")}
                                 error={errors.password?.message}
                                 {...register("password")}
                             />
                         </div>
 
                         <Checkbox
-                            label="Keep me signed in"
+                            label={t("keepSignedIn")}
                         />
 
                         <Button
@@ -165,12 +167,12 @@ export default function LoginFormSection() {
                             className="w-full"
                             disabled={login.isPending}
                         >
-                            {login.isPending ? "Logging in..." : "Log In"}
+                            {login.isPending ? t("loggingIn") : t("logIn")}
                         </Button>
 
                         <div className={dividerStyles()}>
                             <div className={dividerLineStyles()} />
-                            <span className={dividerTextStyles()}>Or continue with</span>
+                            <span className={dividerTextStyles()}>{t("orContinueWith")}</span>
                             <div className={dividerLineStyles()} />
                         </div>
 
@@ -188,9 +190,9 @@ export default function LoginFormSection() {
 
                 <div className={footerStyles()}>
                     <p className={footerTextStyles()}>
-                        Don&apos;t have an account?
+                        {t("dontHaveAccount")}
                         <Link href="/register" className={footerLinkStyles()}>
-                            Sign Up
+                            {t("signUp")}
                         </Link>
                     </p>
                 </div>

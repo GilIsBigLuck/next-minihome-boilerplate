@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const heroSectionStyles = cva([
     "max-w-layout-md mx-auto w-full px-6 pt-16 pb-12",
@@ -20,35 +21,18 @@ const heroDescriptionStyles = cva([
     "text-lg text-gray-600 font-medium",
 ])
 
-interface HeroContentProps {
-    titleParts: { text: string; accent?: boolean }[];
-    description: string;
-}
-
-const heroContent: HeroContentProps = {
-    titleParts: [
-        { text: "Let's build something " },
-        { text: "remarkable", accent: true },
-        { text: " together." }
-    ],
-    description: "Have a specific challenge or just want to explore how we can work together? Our team is ready to listen and help you scale."
-}
-
-export default function HeroSection() {
+export default async function HeroSection() {
+    const t = await getTranslations("contact.hero");
+    const remarkableText = t("remarkable");
+    
     return (
         <section className={heroSectionStyles()}>
             <div className={heroContentStyles()}>
                 <h2 className={heroTitleStyles()}>
-                    {heroContent.titleParts.map((part, index) => (
-                        part.accent ? (
-                            <span key={index} className={heroTitleAccentStyles()}>{part.text}</span>
-                        ) : (
-                            <span key={index}>{part.text}</span>
-                        )
-                    ))}
+                    {t("title", { remarkable: remarkableText })}
                 </h2>
                 <p className={heroDescriptionStyles()}>
-                    {heroContent.description}
+                    {t("description")}
                 </p>
             </div>
         </section>

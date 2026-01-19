@@ -2,6 +2,7 @@
 
 import { cva } from "class-variance-authority";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui";
 
 const sectionStyles = cva([
@@ -39,27 +40,28 @@ const footerLinkStyles = cva([
 ]);
 
 export default function RegisterFormSection() {
+    const t = useTranslations("register");
+    
     return (
         <section className={sectionStyles()}>
             <div className={containerStyles()}>
                 <div className={contentStyles()}>
-                    <h1 className={titleStyles()}>Registration</h1>
+                    <h1 className={titleStyles()}>{t("title")}</h1>
                     <p className={subtitleStyles()}>
-                        계정 등록은 관리자에게 문의해주세요.<br />
-                        Registration is handled by the administrator.
+                        {t("subtitle")}
                     </p>
 
                     <Link href="/login">
                         <Button size="lg" className="w-full">
-                            Go to Login
+                            {t("goToLogin")}
                         </Button>
                     </Link>
 
                     <div className={footerStyles()}>
                         <p className={footerTextStyles()}>
-                            Already have an account?
+                            {t("alreadyHaveAccount")}
                             <Link href="/login" className={footerLinkStyles()}>
-                                Log In
+                                {t("logIn")}
                             </Link>
                         </p>
                     </div>

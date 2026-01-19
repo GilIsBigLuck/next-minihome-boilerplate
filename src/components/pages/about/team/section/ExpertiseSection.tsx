@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { useTranslations } from "next-intl";
 import { Expertise } from "../teamData";
 
 const expertiseSectionStyles = cva([
@@ -112,11 +113,13 @@ interface ExpertiseSectionProps {
 }
 
 export default function ExpertiseSection({ expertise }: ExpertiseSectionProps) {
+    const t = useTranslations("team.expertise");
+    
     return (
         <section className={expertiseSectionStyles()}>
             <h2 className={expertiseTitleStyles()}>
                 <span className={expertiseTitleBarStyles()} />
-                Role &amp; Expertise
+                {t("title")}
             </h2>
             <div className={expertiseGridStyles()}>
                 {expertise.map((item, index) => (

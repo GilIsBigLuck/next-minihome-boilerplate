@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { cva } from "class-variance-authority";
 import { useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 // 오버레이 스타일
 const overlayStyles = cva([
@@ -73,13 +74,8 @@ interface MobileMenuProps {
   onClose: () => void;
 }
 
-const menuItems = [
-  { label: "About", href: "/about" },
-  { label: "Style Guide", href: "/style-guide" },
-  { label: "Contact", href: "/contact" },
-];
-
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+  const t = useTranslations("common");
   // ESC 키로 메뉴 닫기
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -118,11 +114,11 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       >
         {/* 메뉴 헤더 */}
         <div className={menuHeaderStyles()}>
-          <h2 className={menuTitleStyles()}>Menu</h2>
+          <h2 className={menuTitleStyles()}>{t("menu")}</h2>
           <button
             onClick={onClose}
             className={closeButtonStyles()}
-            aria-label="Close menu"
+            aria-label={t("ui.close")}
           >
             <CloseIcon />
           </button>
@@ -130,16 +126,27 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         {/* 메뉴 리스트 */}
         <div className={menuListStyles()}>
-          {menuItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={onClose}
-              className={menuItemStyles()}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link
+            href="/about"
+            onClick={onClose}
+            className={menuItemStyles()}
+          >
+            {t("about")}
+          </Link>
+          <Link
+            href="/style-guide"
+            onClick={onClose}
+            className={menuItemStyles()}
+          >
+            {t("styleGuide")}
+          </Link>
+          <Link
+            href="/contact"
+            onClick={onClose}
+            className={menuItemStyles()}
+          >
+            {t("contact")}
+          </Link>
         </div>
       </nav>
     </>

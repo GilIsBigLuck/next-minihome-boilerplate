@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 
 import { Noto_Sans_KR, Inter, Rubik } from "next/font/google";
-import { getLocale, getMessages } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { notFound } from "next/navigation";
 
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
-import Providers from "@/providers";
-import { Locale } from "@/providers/LanguageProvider";
+import QueryProvider from "@/providers/QueryProvider";
+import { routing } from "@/i18n/routing";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -84,24 +86,40 @@ export const metadata: Metadata = {
   manifest: "/favicon/manifest.json",
 };
 
-export default async function RootLayout({
+type Locale = (typeof routing.locales)[number];
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
-  const locale = await getLocale() as Locale;
+  const { locale } = await params;
+
+  // Validate locale
+  if (!routing.locales.includes(locale as Locale)) {
+    notFound();
+  }
+
   const messages = await getMessages();
 
   return (
     <html lang={locale} className={`${notoSansKR.variable} ${inter.variable} ${rubik.variable}`}>
       <body className="flex flex-col min-h-screen bg-bg-light text-[#0e1b1a] font-body">
-        <Providers locale={locale} messages={messages}>
-          <Header />
-          <main className="pt-20">
-            {children}
-          </main>
-          <Footer />
-        </Providers>
+        <NextIntlClientProvider messages={messages}>
+          <QueryProvider>
+            <Header />
+            <main className="pt-20">
+              {children}
+            </main>
+            <Footer />
+          </QueryProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const heroSectionStyles = cva([
     "relative px-6 py-24 overflow-hidden",
@@ -34,39 +35,21 @@ const heroBackgroundStyles = cva([
     "absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 -z-0",
 ])
 
-interface HeroContentProps {
-    badge: string;
-    titleParts: { text: string; accent?: boolean }[];
-    description: string;
-}
-
-const heroContent: HeroContentProps = {
-    badge: "Our Purpose",
-    titleParts: [
-        { text: "Redefining " },
-        { text: "Clarity", accent: true },
-    ],
-    description: "Empowering businesses through structured innovation and transparent communication. We believe that the best solutions are born from radical honesty and elegant simplicity."
-}
-
-export default function HeroSection() {
+export default async function HeroSection() {
+    const t = await getTranslations("about.hero");
+    const clarityText = t("clarity");
+    
     return (
         <section className={heroSectionStyles()}>
             <div className={heroInnerStyles()}>
                 <span className={heroBadgeStyles()}>
-                    {heroContent.badge}
+                    {t("badge")}
                 </span>
                 <h1 className={heroTitleStyles()}>
-                    {heroContent.titleParts.map((part, index) => (
-                        part.accent ? (
-                            <span key={index} className={heroTitleAccentStyles()}>{part.text}</span>
-                        ) : (
-                            <span key={index}>{part.text}</span>
-                        )
-                    ))}
+                    {t("title", { clarity: clarityText })}
                 </h1>
                 <p className={heroDescriptionStyles()}>
-                    {heroContent.description}
+                    {t("description")}
                 </p>
             </div>
             <div className={heroBackgroundStyles()} />

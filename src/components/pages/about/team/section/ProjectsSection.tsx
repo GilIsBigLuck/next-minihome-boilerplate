@@ -1,5 +1,6 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Project } from "../teamData";
 
 const projectsSectionStyles = cva([
@@ -65,11 +66,13 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
+    const t = useTranslations("team.projects");
+    
     return (
         <section className={projectsSectionStyles()}>
             <h2 className={projectsTitleStyles()}>
                 <span className={projectsTitleBarStyles()} />
-                Key Projects
+                {t("title")}
             </h2>
             <div className={projectsGridStyles()}>
                 {projects.map((project, index) => (

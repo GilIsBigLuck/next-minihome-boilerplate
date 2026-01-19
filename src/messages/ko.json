@@ -5,7 +5,8 @@
     "contact": "연락처",
     "login": "로그인",
     "register": "회원가입",
-    "clearSections": "Clear Sections"
+    "clearSections": "Clear Sections",
+    "menu": "메뉴"
   },
   "header": {
     "title": "Clear Sections"
@@ -41,7 +42,7 @@
   "home": {
     "hero": {
       "subtitle": "부제목",
-      "title": "mini's Clear Sections"
+      "title": "미니의 정돈된 섹션"
     },
     "challenge": {
       "title": "섹션 제목",
@@ -62,6 +63,20 @@
     "nextProject": {
       "title": "다음 프로젝트",
       "description": "최신 작품 탐색"
+    },
+    "imagery": {
+      "quote": {
+        "text": "새로운 아이덴티티는 단순히 더 나아 보일 뿐만 아니라, 우리 스튜디오의 영혼이 마침내 얼굴을 갖게 된 것처럼 느껴집니다.",
+        "author": "— Marcus Thorne, Principal Architect"
+      }
+    },
+    "metadata": {
+      "titleClient": "클라이언트",
+      "titleYear": "연도",
+      "titleRole": "역할",
+      "client": "minihome",
+      "year": "2026",
+      "role": "디자인 및 개발"
     }
   },
   "about": {
@@ -72,6 +87,9 @@
       "description": "구조화된 혁신과 투명한 커뮤니케이션을 통해 비즈니스를 강화합니다. 우리는 최고의 솔루션이 급진적인 정직함과 우아한 단순함에서 탄생한다고 믿습니다."
     },
     "story": {
+      "imageAlt1": "햇빛이 들어오는 현대적인 미니멀리스트 사무 공간",
+      "imageAlt2": "프로젝트를 진행하는 협업 팀",
+      "teamCount": "전 세계 120명 이상의 전문가",
       "journeyToClarity": {
         "title": "명확함으로의 여정",
         "paragraphs": [
@@ -110,7 +128,10 @@
         "ceo": "최고경영자",
         "cto": "최고기술경영자",
         "headOfDesign": "디자인 총괄"
-      }
+      },
+      "marcusBio": "Marcus는 구조적 효율성에 중점을 두고 50개 이상의 글로벌 브랜드의 디지털 변환을 이끌었습니다.",
+      "elenaBio": "확장 가능한 아키텍처의 선구자인 Elena는 우리의 기술적 기반이 우리의 비전만큼 명확하도록 보장합니다.",
+      "jamesonBio": "Jameson은 복잡한 데이터를 사용자를 기쁘게 하고 결과를 이끄는 직관적인 경험으로 변환합니다."
     },
     "cta": {
       "title": "명확함을 찾을 준비가 되셨나요?",
@@ -220,7 +241,13 @@
       "message": "메시지",
       "messagePlaceholder": "메시지를 여기에 작성하세요...",
       "fileUpload": "파일 업로드",
-      "fileUploadHint": "PNG, JPG, PDF 최대 10MB"
+      "fileUploadHint": "PNG, JPG, PDF 최대 10MB",
+      "toggleOn": "토글 스위치 켜기",
+      "optionA": "옵션 A",
+      "optionB": "옵션 B",
+      "acceptTerms": "약관 및 조건 수락",
+      "acceptTermsDescription": "이용약관 및 개인정보처리방침에 동의합니다.",
+      "subscribeNewsletter": "뉴스레터 구독"
     },
     "navigation": {
       "title": "네비게이션 및 모달"
@@ -229,10 +256,10 @@
   "team": {
     "backNavigation": "팀으로 돌아가기",
     "expertise": {
-      "title": "전문 분야"
+      "title": "역할 및 전문 분야"
     },
     "projects": {
-      "title": "주목할 만한 프로젝트"
+      "title": "주요 프로젝트"
     }
   },
   "ui": {

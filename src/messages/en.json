@@ -5,7 +5,8 @@
     "contact": "Contact",
     "login": "Login",
     "register": "Register",
-    "clearSections": "Clear Sections"
+    "clearSections": "Clear Sections",
+    "menu": "Menu"
   },
   "header": {
     "title": "Clear Sections"
@@ -62,6 +63,20 @@
     "nextProject": {
       "title": "Next Project",
       "description": "Explore our latest work"
+    },
+    "imagery": {
+      "quote": {
+        "text": "The new identity doesn't just look better; it feels like the soul of our studio finally has a face.",
+        "author": "— Marcus Thorne, Principal Architect"
+      }
+    },
+    "metadata": {
+      "titleClient": "Client",
+      "titleYear": "Year",
+      "titleRole": "Role",
+      "client": "minihome",
+      "year": "2026",
+      "role": "Design & Development"
     }
   },
   "about": {
@@ -72,6 +87,9 @@
       "description": "Empowering businesses through structured innovation and transparent communication. We believe that the best solutions are born from radical honesty and elegant simplicity."
     },
     "story": {
+      "imageAlt1": "Modern minimalist office space with sunlight",
+      "imageAlt2": "Collaborative team working on a project",
+      "teamCount": "Over 120 experts worldwide",
       "journeyToClarity": {
         "title": "The Journey to Clarity",
         "paragraphs": [
@@ -110,7 +128,10 @@
         "ceo": "Chief Executive Officer",
         "cto": "Chief Technology Officer",
         "headOfDesign": "Head of Design"
-      }
+      },
+      "marcusBio": "Marcus has led digital transformations for over 50 global brands, focusing on structural efficiency.",
+      "elenaBio": "A pioneer in scalable architecture, Elena ensures our technological foundations are as clear as our vision.",
+      "jamesonBio": "Jameson translates complex data into intuitive experiences that delight users and drive results."
     },
     "cta": {
       "title": "Ready to find your clarity?",
@@ -220,7 +241,13 @@
       "message": "Message",
       "messagePlaceholder": "Write your message here...",
       "fileUpload": "File Upload",
-      "fileUploadHint": "PNG, JPG, PDF up to 10MB"
+      "fileUploadHint": "PNG, JPG, PDF up to 10MB",
+      "toggleOn": "Toggle Switch On",
+      "optionA": "Option A",
+      "optionB": "Option B",
+      "acceptTerms": "Accept terms and conditions",
+      "acceptTermsDescription": "You agree to our Terms of Service and Privacy Policy.",
+      "subscribeNewsletter": "Subscribe to newsletter"
     },
     "navigation": {
       "title": "Navigation & Modal"
@@ -229,10 +256,10 @@
   "team": {
     "backNavigation": "Back to Team",
     "expertise": {
-      "title": "Expertise"
+      "title": "Role & Expertise"
     },
     "projects": {
-      "title": "Notable Projects"
+      "title": "Key Projects"
     }
   },
   "ui": {

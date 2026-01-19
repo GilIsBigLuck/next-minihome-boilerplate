@@ -1,6 +1,7 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
 import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getTranslations } from "next-intl/server";
 
 const imagerySectionStyles = cva([
     "w-full px-4 py-12",
@@ -43,27 +44,15 @@ const imageryQuoteAuthorStyles = cva([
     "mt-6 font-bold text-sm",
 ])
 
-interface ImageryContentProps {
-    tallImage: string;
-    squareImage: string;
-    quote: {
-        text: string;
-        author: string;
-    };
-}
-
-const imageryContent: ImageryContentProps = {
+const imageryContent = {
     tallImage: "/dummy/david-maier-nSHEKTHRm0U-unsplash.jpg",
     squareImage: "/dummy/pawel-czerwinski-IQHxLsy-VgM-unsplash.jpg",
-    quote: {
-        text: "The new identity doesn't just look better; it feels like the soul of our studio finally has a face.",
-        author: "— Marcus Thorne, Principal Architect"
-    }
 }
 
 export default async function ImagerySection() {
     const tallBlur = await getBlurDataURL(imageryContent.tallImage);
     const squareBlur = await getBlurDataURL(imageryContent.squareImage);
+    const t = await getTranslations("home.imagery.quote");
 
     return (
         <section className={imagerySectionStyles()}>
@@ -92,10 +81,10 @@ export default async function ImagerySection() {
                         </div>
                         <div className={imageryQuoteBlockStyles()}>
                             <p className={imageryQuoteTextStyles()}>
-                                &ldquo;{imageryContent.quote.text}&rdquo;
+                                &ldquo;{t("text")}&rdquo;
                             </p>
                             <p className={imageryQuoteAuthorStyles()}>
-                                {imageryContent.quote.author}
+                                {t("author")}
                             </p>
                         </div>
                     </div>

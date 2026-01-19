@@ -1,5 +1,8 @@
+"use client";
+
 import { cva } from "class-variance-authority";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const contactSectionStyles = cva([
     "max-w-layout-md mx-auto w-full px-6 grid grid-cols-1 gap-16 pb-24",
@@ -137,34 +140,6 @@ const testimonialAuthorStyles = cva([
     "text-xs font-bold mt-3",
 ])
 
-// Data
-const inquiryTypes = [
-    { value: "", label: "Select a service category" },
-    { value: "consulting", label: "General Consulting" },
-    { value: "enterprise", label: "Enterprise Solutions" },
-    { value: "support", label: "Technical Support" },
-    { value: "billing", label: "Billing Inquiry" },
-]
-
-const contactInfo = {
-    headquarters: {
-        title: "Our Headquarters",
-        name: "San Francisco Office",
-        address: ["1200 Market Street, Suite 400", "San Francisco, CA 94102", "United States"]
-    },
-    directContact: {
-        title: "Direct Contact",
-        email: "hello@clearsections.io",
-        phone: "+1 (415) 555-0123"
-    },
-    social: {
-        title: "Follow Our Progress"
-    },
-    testimonial: {
-        text: "Clear Sections redefined our operational workflow in under three months. Their support team is exceptionally responsive.",
-        author: "— Sarah Jenkins, CTO at NexaFlow"
-    }
-}
 
 function LocationIcon() {
     return (
@@ -234,6 +209,17 @@ function InstagramIcon() {
 }
 
 export default function ContactFormSection() {
+    const t = useTranslations("contact.form");
+    const tInfo = useTranslations("contact.info");
+    
+    const inquiryTypes = [
+        { value: "", label: t("inquiryTypePlaceholder") },
+        { value: "consulting", label: t("inquiryTypes.generalConsulting") },
+        { value: "enterprise", label: t("inquiryTypes.enterpriseSolutions") },
+        { value: "support", label: t("inquiryTypes.technicalSupport") },
+        { value: "billing", label: t("inquiryTypes.billingInquiry") },
+    ]
+
     return (
         <section id="contact-form" className={contactSectionStyles()}>
             {/* Contact Form */}
@@ -242,25 +228,25 @@ export default function ContactFormSection() {
                     <form className={formStyles()}>
                         <div className={formGridStyles()}>
                             <label className={formLabelStyles()}>
-                                <span className={formLabelTextStyles()}>Full Name</span>
+                                <span className={formLabelTextStyles()}>{t("fullName")}</span>
                                 <input
                                     type="text"
-                                    placeholder="John Doe"
+                                    placeholder={t("fullNamePlaceholder")}
                                     className={formInputStyles()}
                                 />
                             </label>
                             <label className={formLabelStyles()}>
-                                <span className={formLabelTextStyles()}>Work Email</span>
+                                <span className={formLabelTextStyles()}>{t("workEmail")}</span>
                                 <input
                                     type="email"
-                                    placeholder="john@company.com"
+                                    placeholder={t("workEmailPlaceholder")}
                                     className={formInputStyles()}
                                 />
                             </label>
                         </div>
 
                         <label className={formLabelStyles()}>
-                            <span className={formLabelTextStyles()}>Inquiry Type</span>
+                            <span className={formLabelTextStyles()}>{t("inquiryType")}</span>
                             <div className={formSelectContainerStyles()}>
                                 <select className={formSelectStyles()}>
                                     {inquiryTypes.map((type) => (
@@ -276,16 +262,16 @@ export default function ContactFormSection() {
                         </label>
 
                         <label className={formLabelStyles()}>
-                            <span className={formLabelTextStyles()}>Message</span>
+                            <span className={formLabelTextStyles()}>{t("message")}</span>
                             <textarea
-                                placeholder="Tell us about your project or questions..."
+                                placeholder={t("messagePlaceholder")}
                                 className={formTextareaStyles()}
                             />
                         </label>
 
                         <div className={formButtonContainerStyles()}>
                             <button type="submit" className={formButtonStyles()}>
-                                Send Message
+                                {t("sendMessage")}
                                 <SendIcon />
                             </button>
                         </div>
@@ -298,18 +284,18 @@ export default function ContactFormSection() {
                 <div className={infoBlocksStyles()}>
                     {/* Headquarters */}
                     <div className={infoBlockStyles()}>
-                        <h3 className={infoBlockTitleStyles()}>{contactInfo.headquarters.title}</h3>
+                        <h3 className={infoBlockTitleStyles()}>{tInfo("headquarters.title")}</h3>
                         <div className={infoItemStyles()}>
                             <span className={infoIconStyles()}>
                                 <LocationIcon />
                             </span>
                             <div>
-                                <p className={infoMainTextStyles()}>{contactInfo.headquarters.name}</p>
+                                <p className={infoMainTextStyles()}>{tInfo("headquarters.name")}</p>
                                 <p className={infoSubTextStyles()}>
-                                    {contactInfo.headquarters.address.map((line, index) => (
+                                    {(tInfo.raw("headquarters.address") as string[]).map((line: string, index: number, arr: string[]) => (
                                         <span key={index}>
                                             {line}
-                                            {index < contactInfo.headquarters.address.length - 1 && <br />}
+                                            {index < arr.length - 1 && <br />}
                                         </span>
                                     ))}
                                 </p>
@@ -319,22 +305,22 @@ export default function ContactFormSection() {
 
                     {/* Direct Contact */}
                     <div className={infoBlockStyles()}>
-                        <h3 className={infoBlockTitleStyles()}>{contactInfo.directContact.title}</h3>
+                        <h3 className={infoBlockTitleStyles()}>{tInfo("directContact.title")}</h3>
                         <div className="space-y-6">
                             <div className={contactLinkStyles()}>
                                 <span className={infoIconStyles()}>
                                     <MailIcon />
                                 </span>
-                                <Link href={`mailto:${contactInfo.directContact.email}`} className={contactLinkTextStyles()}>
-                                    {contactInfo.directContact.email}
+                                <Link href={`mailto:${tInfo("directContact.email")}`} className={contactLinkTextStyles()}>
+                                    {tInfo("directContact.email")}
                                 </Link>
                             </div>
                             <div className={contactLinkStyles()}>
                                 <span className={infoIconStyles()}>
                                     <PhoneIcon />
                                 </span>
-                                <Link href={`tel:${contactInfo.directContact.phone.replace(/\D/g, '')}`} className={contactLinkTextStyles()}>
-                                    {contactInfo.directContact.phone}
+                                <Link href={`tel:${tInfo("directContact.phone").replace(/\D/g, '')}`} className={contactLinkTextStyles()}>
+                                    {tInfo("directContact.phone")}
                                 </Link>
                             </div>
                         </div>
@@ -342,7 +328,7 @@ export default function ContactFormSection() {
 
                     {/* Social Links */}
                     <div className={infoBlockStyles()}>
-                        <h3 className={infoBlockTitleStyles()}>{contactInfo.social.title}</h3>
+                        <h3 className={infoBlockTitleStyles()}>{tInfo("social.title")}</h3>
                         <div className={socialLinksStyles()}>
                             <Link href="#" className={socialLinkStyles()}>
                                 <LinkedInIcon />
@@ -359,8 +345,8 @@ export default function ContactFormSection() {
 
                 {/* Testimonial */}
                 <div className={testimonialStyles()}>
-                    <p className={testimonialTextStyles()}>&ldquo;{contactInfo.testimonial.text}&rdquo;</p>
-                    <p className={testimonialAuthorStyles()}>{contactInfo.testimonial.author}</p>
+                    <p className={testimonialTextStyles()}>&ldquo;{tInfo("testimonial.text")}&rdquo;</p>
+                    <p className={testimonialAuthorStyles()}>{tInfo("testimonial.author")}</p>
                 </div>
             </div>
         </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { cva } from "class-variance-authority";
+import { useTranslations } from "next-intl";
 import { Input, Toggle, Radio, Select, Textarea, Checkbox, InputGroup, FileUpload } from "@/components/ui";
 
 const sectionStyles = cva([
@@ -46,78 +47,80 @@ function SearchIcon() {
     )
 }
 
-export default function FormsSection() {
+export default async function FormsSection() {
+    const t = await getTranslations("styleGuide.forms");
+    
     return (
         <section className={sectionStyles()} id="forms">
             <div className={sectionHeaderStyles()}>
                 <EditNoteIcon />
-                <h2 className={sectionTitleStyles()}>Forms</h2>
+                <h2 className={sectionTitleStyles()}>{t("title")}</h2>
             </div>
             <div className={formContainerStyles()}>
                 <Input
-                    label="Default Input"
-                    placeholder="Your name"
+                    label={t("defaultInput")}
+                    placeholder={t("defaultInputPlaceholder")}
                     type="text"
                 />
 
                 <Input
-                    label="Error State"
+                    label={t("errorState")}
                     type="email"
                     defaultValue="invalid-email"
-                    error="Please enter a valid email address."
+                    error={t("errorMessage")}
                 />
 
                 <InputGroup
-                    label="Search Input"
-                    placeholder="Search..."
+                    label={t("searchInput")}
+                    placeholder={t("searchPlaceholder")}
                     prepend={<SearchIcon />}
                 />
 
                 <InputGroup
-                    label="URL Input"
-                    placeholder="yoursite.com"
+                    label={t("urlInput")}
+                    placeholder={t("urlPlaceholder")}
                     prepend="https://"
                 />
 
                 <Select
-                    label="Select Option"
-                    placeholder="Choose an option"
+                    label={t("selectOption")}
+                    placeholder={t("selectPlaceholder")}
                     options={[
-                        { value: "option1", label: "Option 1" },
-                        { value: "option2", label: "Option 2" },
-                        { value: "option3", label: "Option 3" },
+                        { value: "option1", label: t("option1") },
+                        { value: "option2", label: t("option2") },
+                        { value: "option3", label: t("option3") },
                     ]}
                 />
 
                 <Textarea
-                    label="Message"
-                    placeholder="Write your message here..."
+                    label={t("message")}
+                    placeholder={t("messagePlaceholder")}
                     maxLength={500}
                     showCount
                     defaultValue=""
                 />
 
                 <FileUpload
-                    label="File Upload"
-                    hint="PNG, JPG, PDF up to 10MB"
+                    label={t("fileUpload")}
+                    hint={t("fileUploadHint")}
                     accept="image/*,.pdf"
                 />
 
                 <div className="space-y-4">
-                    <Toggle label="Toggle Switch On" defaultChecked />
+                    <Toggle label={t("toggleOn")} defaultChecked />
 
                     <div className={radioGroupStyles()}>
-                        <Radio name="options" label="Option A" defaultChecked />
-                        <Radio name="options" label="Option B" />
+                        <Radio name="options" label={t("optionA")} defaultChecked />
+                        <Radio name="options" label={t("optionB")} />
                     </div>
 
                     <div className={checkboxGroupStyles()}>
                         <Checkbox
-                            label="Accept terms and conditions"
-                            description="You agree to our Terms of Service and Privacy Policy."
+                            label={t("acceptTerms")}
+                            description={t("acceptTermsDescription")}
                         />
                         <Checkbox
-                            label="Subscribe to newsletter"
+                            label={t("subscribeNewsletter")}
                             defaultChecked
                         />
                     </div>

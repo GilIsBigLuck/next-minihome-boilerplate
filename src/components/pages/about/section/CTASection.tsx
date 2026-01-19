@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const ctaSectionStyles = cva([
     "px-6 py-24",
@@ -34,19 +35,9 @@ const ctaSecondaryButtonStyles = cva([
     "hover:bg-primary/30 transition-all",
 ])
 
-interface CTAContentProps {
-    title: string;
-    primaryButton: { text: string; href: string };
-    secondaryButton: { text: string; href: string };
-}
-
-const ctaContent: CTAContentProps = {
-    title: "Ready to find your clarity?",
-    primaryButton: { text: "Start Your Project", href: "#" },
-    secondaryButton: { text: "Talk to an Expert", href: "#" }
-}
-
-export default function CTASection() {
+export default async function CTASection() {
+    const t = await getTranslations("about.cta");
+    
     return (
         <section className={ctaSectionStyles()}>
             <div className={ctaContainerStyles()}>
@@ -56,14 +47,14 @@ export default function CTASection() {
                     </svg>
                 </div>
                 <h2 className={ctaTitleStyles()}>
-                    {ctaContent.title}
+                    {t("title")}
                 </h2>
                 <div className={ctaButtonsContainerStyles()}>
                     <button className={ctaPrimaryButtonStyles()}>
-                        {ctaContent.primaryButton.text}
+                        {t("startProject")}
                     </button>
                     <button className={ctaSecondaryButtonStyles()}>
-                        {ctaContent.secondaryButton.text}
+                        {t("talkToExpert")}
                     </button>
                 </div>
             </div>

@@ -1,7 +1,9 @@
 "use client";
 
 import { cva } from "class-variance-authority";
-import { useLanguage, Locale } from "@/providers/LanguageProvider";
+import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { routing } from "@/i18n/routing";
 
 // 언어 토글 컨테이너 스타일
 const langToggleContainerStyles = cva([
@@ -23,11 +25,19 @@ const langToggleButtonInactiveStyles = cva([
   "text-gray-600"
 ])
 
-export default function LanguageToggle() {
-  const { locale, setLocale } = useLanguage();
+type Locale = (typeof routing.locales)[number];
 
-  const handleLanguageChange = (lang: Locale) => {
-    setLocale(lang);
+export default function LanguageToggle() {
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleLanguageChange = (newLocale: Locale) => {
+    // Replace the locale segment in the pathname
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    const newPathname = segments.join("/");
+    router.push(newPathname);
   };
 
   return (

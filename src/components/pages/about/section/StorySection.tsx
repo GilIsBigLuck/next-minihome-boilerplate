@@ -1,6 +1,7 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
 import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getTranslations } from "next-intl/server";
 
 const storySectionStyles = cva([
     "px-6 py-20 bg-white",
@@ -78,31 +79,22 @@ interface StoryBlockProps {
     teamCount?: string;
 }
 
-const storyBlocks: StoryBlockProps[] = [
+const storyBlocksData = [
     {
-        title: "The Journey to Clarity",
-        paragraphs: [
-            "Founded in 2014, Clear Sections began as a three-person collective in a shared workspace. Our mission was simple: eliminate the noise that prevents great ideas from scaling.",
-            "A decade later, we've evolved into an industry leader, helping Fortune 500 companies and startups alike find their true north through structured innovation frameworks."
-        ],
         image: "/dummy/fons-heijnsbroek-v3mm6Mjkm6o-unsplash.jpg",
-        imageAlt: "Modern minimalist office space with sunlight",
+        imageAltKey: "imageAlt1",
         reverse: false
     },
     {
-        title: "Continuous Evolution",
-        paragraphs: [
-            "We don't just adapt to change; we define it. Our methodology has been refined through thousands of projects, ensuring that \"clarity\" isn't just a buzzword, but a measurable outcome."
-        ],
         image: "/dummy/steve-johnson-SR6hGVgpZZc-unsplash.jpg",
-        imageAlt: "Collaborative team working on a project",
+        imageAltKey: "imageAlt2",
         reverse: true,
         teamAvatars: [
             "https://lh3.googleusercontent.com/aida-public/AB6AXuD6G3H_bAp5mrZlvd_rCGXiuEE8QSG2TpX9-GS3c_vzpXKzYKm7AodTVK3yZSaFKD4veJHN1qXMCii-KGOaNvoYR37vmx_qruJjgb3tuQMEeCSiq1IF7LNU0FaEaUmjMnyqxXOq07Wk_2OPodoByhR9pGCX9hmGQVrO0oVTRLbbh71cOH6SJ96_1cOoEa1MMWXtW19FKQt9QsqpxZGiDSjd3jNFE1K2LmS6iLBKMW0oA_EUr_JdS3iZComkjQknpXBaTDh1iY65KTRM",
             "https://lh3.googleusercontent.com/aida-public/AB6AXuBztGjK_B_9yoZu0M4KDVTOJ0J0hhblFcNMpBSuf5jYfwkv1-KRddSC4Sn4AOOH3Zh_MuMDtXvNZZhQnPziqbC2-19Os5II6BFnj4s6ocbR-NjBpTx5zaYGx_zTlc6MX60ytAhtKrx-8QcG6da5vmjZRRm_pFd6m6-zZfqgruEfqV58CVz-r44ksNkYY4PoVUHeUO_gbP57e7WxDWhph_W6zJUPS146JAEIra6cyK2gKzBnLGX703qaiJBLAylYm6Pbnq3wSpTnlK1d",
             "https://lh3.googleusercontent.com/aida-public/AB6AXuBl6CMumKBQYRjqy8JjUGb5L0YemjAy3SzYGP6CF3EuPVLSydPrgXiHcUWb-qmPvieRmn3KaD54qkDvzZlR3mxjtERJRU3iHsw-VJiaq6XMX3HD131yctSUEXqRVOrtD0UsWBmxIlCMPCr-npQBWgepHepnH1zopT_feZy1ZaLcgMIpr2JNL3B7ajVrQgU9HWAT4v68AEBidRLk3KzKvPG7TUeadXQTZ9kSA8S1jOYPaChz6YYht5pDMjP6vt-aiJEwnnmfuPl44v4b"
         ],
-        teamCount: "Over 120 experts worldwide"
+        teamCountKey: "teamCount"
     }
 ]
 
@@ -186,8 +178,31 @@ function StoryBlock({ title, paragraphs, image, imageAlt, reverse, teamAvatars, 
 }
 
 export default async function StorySection() {
-    const storyBlur1 = await getBlurDataURL(storyBlocks[0].image);
-    const storyBlur2 = await getBlurDataURL(storyBlocks[1].image);
+    const t = await getTranslations("about.story");
+    const tJourney = await getTranslations("about.story.journeyToClarity");
+    const tEvolution = await getTranslations("about.story.continuousEvolution");
+    
+    const storyBlur1 = await getBlurDataURL(storyBlocksData[0].image);
+    const storyBlur2 = await getBlurDataURL(storyBlocksData[1].image);
+
+    const storyBlocks: StoryBlockProps[] = [
+        {
+            title: tJourney("title"),
+            paragraphs: tJourney.raw("paragraphs") as string[],
+            image: storyBlocksData[0].image,
+            imageAlt: t(storyBlocksData[0].imageAltKey),
+            reverse: storyBlocksData[0].reverse || false
+        },
+        {
+            title: tEvolution("title"),
+            paragraphs: tEvolution.raw("paragraphs") as string[],
+            image: storyBlocksData[1].image,
+            imageAlt: t(storyBlocksData[1].imageAltKey),
+            reverse: storyBlocksData[1].reverse || false,
+            teamAvatars: storyBlocksData[1].teamAvatars,
+            teamCount: storyBlocksData[1].teamCountKey ? t(storyBlocksData[1].teamCountKey) : undefined
+        }
+    ];
 
     return (
         <section id="journey-to-clarity" className={storySectionStyles()}>

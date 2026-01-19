@@ -1,5 +1,6 @@
 import { cva } from "class-variance-authority";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const backNavStyles = cva([
     "mb-12",
@@ -20,11 +21,13 @@ function ArrowBackIcon() {
 }
 
 export default function BackNavigation() {
+    const t = useTranslations("team");
+    
     return (
         <div className={backNavStyles()}>
             <Link href="/about" className={backLinkStyles()}>
                 <ArrowBackIcon />
-                <span>Back to Team</span>
+                <span>{t("backNavigation")}</span>
             </Link>
         </div>
     )
