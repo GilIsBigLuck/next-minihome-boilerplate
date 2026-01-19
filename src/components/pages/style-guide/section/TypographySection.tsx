@@ -13,12 +13,13 @@ const sectionTitleStyles = cva([
 ])
 
 const tableContainerStyles = cva([
-    "overflow-hidden rounded-xl border border-primary/20",
+    "overflow-x-auto rounded-xl border border-primary/20",
     "bg-white",
+    "scroll-smooth",
 ])
 
 const tableStyles = cva([
-    "w-full text-left",
+    "w-full min-w-[700px] text-left",
 ])
 
 const tableHeaderStyles = cva([
@@ -26,11 +27,11 @@ const tableHeaderStyles = cva([
 ])
 
 const tableHeaderCellStyles = cva([
-    "px-6 py-4 text-sm font-bold uppercase tracking-wider",
+    "px-4 md:px-6 py-4 text-sm font-bold uppercase tracking-wider",
 ])
 
 const tableCellStyles = cva([
-    "px-6 py-6",
+    "px-4 md:px-6 py-4 md:py-6",
 ])
 
 const typeLabelStyles = cva([

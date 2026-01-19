@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { cva } from "class-variance-authority";
+import { useState } from "react";
 import LanguageToggle from "./LanguageToggle";
+import HamburgerButton from "./HamburgerButton";
+import MobileMenu from "./MobileMenu";
 
 // 헤더 스타일
 const headerStyles = cva([
@@ -40,47 +45,64 @@ const navItemStyles = cva([
 ])
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
 
   return (
-    
-    <header className={headerStyles()}>
+    <>
+      <header className={headerStyles()}>
+        <div className={headerInnerStyles()}>
+          <div className={logoStyles()}>
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/favicon/favicon-32x32.png"
+                alt="Logo"
+                width={32}
+                height={32}
+                className={logoImageStyles()}
+              />
+              <span className={logoTextStyles()}>Clear Sections</span>
+            </Link>
+          </div>
 
-      <div className={headerInnerStyles()}>
+          <div className="flex items-center gap-8">
+            <nav className={navStyles()}>
+              <Link href="/about" className={navItemStyles()}>
+                About
+              </Link>
+              <Link href="/style-guide" className={navItemStyles()}>
+                Style Guide
+              </Link>
+              <Link href="/contact" className={navItemStyles()}>
+                Contact
+              </Link>
+            </nav>
 
-        <div className={logoStyles()}>
-          <Link href="/" className="flex items-center gap-3">
-            <Image 
-              src="/favicon/favicon-32x32.png" 
-              alt="Logo" 
-              width={32} 
-              height={32}
-              className={logoImageStyles()}
+            <LanguageToggle />
+
+            <HamburgerButton
+              isOpen={isMobileMenuOpen}
+              onClick={toggleMobileMenu}
             />
-            <span className={logoTextStyles()}>
-              Clear Sections 
-            </span>
-          </Link>
+          </div>
+
+          {/* <Link
+            href="/login"
+            className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all"
+          >
+            Login
+          </Link> */}
         </div>
+      </header>
 
-        <div className="flex items-center gap-8">
-          <nav className={navStyles()}>
-            <Link href="/about" className={navItemStyles()}>About</Link>
-            <Link href="/style-guide" className={navItemStyles()}>Style Guide</Link>
-            <Link href="/contact" className={navItemStyles()}>Contact</Link>
-          </nav>
-
-          <LanguageToggle />
-
-        </div>
-
-        {/* <Link
-          href="/login"
-          className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition-all"
-        >
-          Login
-        </Link> */}
-      </div>
-
-    </header>
+      <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} />
+    </>
   );
 }
