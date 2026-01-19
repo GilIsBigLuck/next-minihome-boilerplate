@@ -74,7 +74,7 @@ export default function MapSection() {
         }
 
         // 네이버 지도 스크립트 동적 로드
-        const scriptUrl = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${NAVER_MAP_CLIENT_ID}`;
+        const scriptUrl = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_MAP_CLIENT_ID}`;
 
         const script = document.createElement("script");
         script.src = scriptUrl;
