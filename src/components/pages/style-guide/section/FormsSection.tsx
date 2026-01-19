@@ -47,8 +47,8 @@ function SearchIcon() {
     )
 }
 
-export default async function FormsSection() {
-    const t = await getTranslations("styleGuide.forms");
+export default function FormsSection() {
+    const t = useTranslations("styleGuide.forms");
     
     return (
         <section className={sectionStyles()} id="forms">
