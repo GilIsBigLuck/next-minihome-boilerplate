@@ -16,6 +16,7 @@ const notoSansKR = Noto_Sans_KR({
   weight: ["400", "500", "700"],
   variable: "--font-noto-sans-kr",
   display: "swap",
+  preload: true,
 });
 
 const inter = Inter({
@@ -23,6 +24,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
+  preload: true,
 });
 
 const rubik = Rubik({
@@ -30,6 +32,7 @@ const rubik = Rubik({
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-rubik",
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {

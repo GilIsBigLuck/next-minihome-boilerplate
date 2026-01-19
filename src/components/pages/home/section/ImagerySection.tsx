@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
-import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getBlurDataURL } from "@/lib/blur";
 import { getTranslations } from "next-intl/server";
 
 const imagerySectionStyles = cva([
@@ -50,8 +50,7 @@ const imageryContent = {
 }
 
 export default async function ImagerySection() {
-    const tallBlur = await getBlurDataURL(imageryContent.tallImage);
-    const squareBlur = await getBlurDataURL(imageryContent.squareImage);
+    const blurDataURL = getBlurDataURL();
     const t = await getTranslations("home.imagery.quote");
 
     return (
@@ -65,7 +64,7 @@ export default async function ImagerySection() {
                             fill
                             className={imageryImageStyles()}
                             placeholder="blur"
-                            blurDataURL={tallBlur}
+                            blurDataURL={blurDataURL}
                         />
                     </div>
                     <div className={imageryRightColumnStyles()}>
@@ -76,7 +75,7 @@ export default async function ImagerySection() {
                                 fill
                                 className={imageryImageStyles()}
                                 placeholder="blur"
-                                blurDataURL={squareBlur}
+                                blurDataURL={blurDataURL}
                             />
                         </div>
                         <div className={imageryQuoteBlockStyles()}>

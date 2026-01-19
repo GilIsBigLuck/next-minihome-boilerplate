@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
-import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getBlurDataURL } from "@/lib/blur";
 import { getTranslations } from "next-intl/server";
 
 const storySectionStyles = cva([
@@ -182,8 +182,7 @@ export default async function StorySection() {
     const tJourney = await getTranslations("about.story.journeyToClarity");
     const tEvolution = await getTranslations("about.story.continuousEvolution");
     
-    const storyBlur1 = await getBlurDataURL(storyBlocksData[0].image);
-    const storyBlur2 = await getBlurDataURL(storyBlocksData[1].image);
+    const blurDataURL = getBlurDataURL();
 
     const storyBlocks: StoryBlockProps[] = [
         {
@@ -211,7 +210,7 @@ export default async function StorySection() {
                     <StoryBlock 
                         key={index} 
                         {...block} 
-                        blurDataURL={index === 0 ? storyBlur1 : storyBlur2}
+                        blurDataURL={blurDataURL}
                     />
                 ))}
             </div>

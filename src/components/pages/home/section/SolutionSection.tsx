@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
-import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getBlurDataURL } from "@/lib/blur";
 import { getTranslations } from "next-intl/server";
 
 const solutionSectionStyles = cva([
@@ -34,7 +34,7 @@ const solutionImageStyles = cva([
 const solutionImagePath = "/dummy/logan-voss-3RevGUpbUXI-unsplash.jpg";
 
 export default async function SolutionSection() {
-    const blurDataURL = await getBlurDataURL(solutionImagePath);
+    const blurDataURL = getBlurDataURL();
     const t = await getTranslations("home.solution");
 
     return (

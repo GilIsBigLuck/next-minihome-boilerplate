@@ -1,6 +1,6 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
-import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getBlurDataURL } from "@/lib/blur";
 import { getTranslations } from "next-intl/server";
 
 const heroSectionStyles = cva([
@@ -37,7 +37,7 @@ const heroBannerTitleStyles = cva([
 const heroImagePath = "/dummy/fons-heijnsbroek-uhWEGjTfStg-unsplash.jpg";
 
 export default async function HeroSection() {
-    const blurDataURL = await getBlurDataURL(heroImagePath);
+    const blurDataURL = getBlurDataURL();
     const t = await getTranslations("home.hero");
 
     return (
