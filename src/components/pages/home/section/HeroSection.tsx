@@ -1,6 +1,7 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
 import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getTranslations } from "next-intl/server";
 
 const heroSectionStyles = cva([
     "w-full px-4 py-8",
@@ -37,18 +38,19 @@ const heroImagePath = "/dummy/fons-heijnsbroek-uhWEGjTfStg-unsplash.jpg";
 
 export default async function HeroSection() {
     const blurDataURL = await getBlurDataURL(heroImagePath);
+    const t = await getTranslations("home.hero");
 
     return (
     <section className={heroSectionStyles()}>
         <div className={heroSectionInnerStyles()}>
             <div className={heroBannerStyles()}>
-                    <div 
-                        className={heroBannerImageStyles()} 
+                    <div
+                        className={heroBannerImageStyles()}
                     >
-                        <Image 
-                            src={heroImagePath} 
-                            alt="Hero Banner Image" 
-                            fill 
+                        <Image
+                            src={heroImagePath}
+                            alt="Hero Banner Image"
+                            fill
                             className="object-cover"
                             placeholder="blur"
                             blurDataURL={blurDataURL}
@@ -57,10 +59,10 @@ export default async function HeroSection() {
                     </div>
                 <div className={heroBannerContentStyles()}>
                     <p className={heroBannerSubtitleStyles()}>
-                        Sub Title
+                        {t("subtitle")}
                     </p>
                     <h1 className={heroBannerTitleStyles()}>
-                        mini&apos;s <br/> Clear Sections
+                        {t("title")}
                     </h1>
                 </div>
             </div>

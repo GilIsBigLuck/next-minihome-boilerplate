@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cva } from "class-variance-authority";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import LanguageToggle from "./LanguageToggle";
 import HamburgerButton from "./HamburgerButton";
 import MobileMenu from "./MobileMenu";
@@ -46,6 +47,8 @@ const navItemStyles = cva([
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const t = useTranslations("common");
+  const tHeader = useTranslations("header");
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -68,20 +71,20 @@ export default function Header() {
                 height={32}
                 className={logoImageStyles()}
               />
-              <span className={logoTextStyles()}>Clear Sections</span>
+              <span className={logoTextStyles()}>{tHeader("title")}</span>
             </Link>
           </div>
 
           <div className="flex items-center gap-8">
             <nav className={navStyles()}>
               <Link href="/about" className={navItemStyles()}>
-                About
+                {t("about")}
               </Link>
               <Link href="/style-guide" className={navItemStyles()}>
-                Style Guide
+                {t("styleGuide")}
               </Link>
               <Link href="/contact" className={navItemStyles()}>
-                Contact
+                {t("contact")}
               </Link>
             </nav>
 

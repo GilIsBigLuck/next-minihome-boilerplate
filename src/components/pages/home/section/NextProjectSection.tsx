@@ -2,6 +2,7 @@ import { cva } from "class-variance-authority";
 import Link from "next/link";
 import Image from "next/image";
 import { getBlurDataURL } from "@/lib/plaiceholder";
+import { getTranslations } from "next-intl/server";
 
 const nextProjectSectionStyles = cva([
     "w-full mt-24",
@@ -36,28 +37,17 @@ const nextProjectTitleStyles = cva([
     "group-hover:scale-[1.02] transition-transform duration-700 origin-left",
 ])
 
-interface NextProjectContentProps {
-    label: string;
-    title: string;
-    href: string;
-    backgroundImage: string;
-}
-
-const nextProjectContent: NextProjectContentProps = {
-    label: "Next Project",
-    title: "Ethos Workspace Systems",
-    href: "/style-guide",
-    backgroundImage: "/dummy/logan-voss-cfEoiMkUVXU-unsplash.jpg"
-}
+const nextProjectBackgroundImage = "/dummy/logan-voss-cfEoiMkUVXU-unsplash.jpg";
 
 export default async function NextProjectSection() {
-    const blurDataURL = await getBlurDataURL(nextProjectContent.backgroundImage);
+    const blurDataURL = await getBlurDataURL(nextProjectBackgroundImage);
+    const t = await getTranslations("home.nextProject");
 
     return (
         <section className={nextProjectSectionStyles()}>
-            <Link href={nextProjectContent.href} className={nextProjectLinkStyles()}>
+            <Link href="/style-guide" className={nextProjectLinkStyles()}>
                 <Image
-                    src={nextProjectContent.backgroundImage}
+                    src={nextProjectBackgroundImage}
                     alt="Next Project Background"
                     fill
                     className={nextProjectBgImageStyles()}
@@ -67,7 +57,7 @@ export default async function NextProjectSection() {
                 <div className={nextProjectOverlayStyles()} />
                 <div className={nextProjectContentStyles()}>
                     <span className={nextProjectLabelStyles()}>
-                        {nextProjectContent.label}
+                        {t("title")}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
@@ -83,7 +73,7 @@ export default async function NextProjectSection() {
                         </svg>
                     </span>
                     <h2 className={nextProjectTitleStyles()}>
-                        {nextProjectContent.title}
+                        {t("description")}
                     </h2>
                 </div>
             </Link>

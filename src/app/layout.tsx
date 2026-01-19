@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { Noto_Sans_KR, Inter, Rubik } from "next/font/google";
+import { getLocale, getMessages } from "next-intl/server";
 
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import Providers from "@/providers";
+import { Locale } from "@/providers/LanguageProvider";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -82,15 +84,18 @@ export const metadata: Metadata = {
   manifest: "/favicon/manifest.json",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale() as Locale;
+  const messages = await getMessages();
+
   return (
-    <html lang="ko" className={`${notoSansKR.variable} ${inter.variable} ${rubik.variable}`}>
+    <html lang={locale} className={`${notoSansKR.variable} ${inter.variable} ${rubik.variable}`}>
       <body className="flex flex-col min-h-screen bg-bg-light text-[#0e1b1a] font-body">
-        <Providers>
+        <Providers locale={locale} messages={messages}>
           <Header />
           <main className="pt-20">
             {children}

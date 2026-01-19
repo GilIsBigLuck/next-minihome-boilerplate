@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const challengeSectionStyles = cva([
     "max-w-layout-md mx-auto px-6 py-16",
@@ -20,28 +21,18 @@ const challengeSectionTextStyles = cva([
     "text-lg leading-relaxed text-gray-600 font-light",
 ])
 
-interface ChallengeContentProps {
-    title: string;
-    paragraphs: string[];
-}
+export default async function ChallengeSection() {
+    const t = await getTranslations("home.challenge");
+    const paragraphs = t.raw("paragraphs") as string[];
 
-const challengeContent: ChallengeContentProps = {
-    title: "Section Title",
-    paragraphs: [
-        "Studio Archstone sought to redefine the visual language of urban redevelopment. Their existing brand felt rooted in the past, failing to communicate the sustainable and human-centric approach of their modern architectural projects.",
-        "We were tasked with creating a comprehensive identity system that bridges the gap between industrial heritage and future-focused innovation, ensuring consistency across physical sites and digital touchpoints."
-    ]
-}
-
-export default function ChallengeSection() {
     return (
         <section className={challengeSectionStyles()}>
             <div className={challengeSectionInnerStyles()}>
                 <h3 className={challengeSectionTitleStyles()}>
-                    {challengeContent.title}
+                    {t("title")}
                 </h3>
                 <div className={challengeSectionGridStyles()}>
-                    {challengeContent.paragraphs.map((paragraph, index) => (
+                    {paragraphs.map((paragraph, index) => (
                         <p key={index} className={challengeSectionTextStyles()}>
                             {paragraph}
                         </p>

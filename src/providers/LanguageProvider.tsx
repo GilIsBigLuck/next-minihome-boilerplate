@@ -1,14 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 export type Locale = "en" | "ko";
 
 interface LanguageContextType {
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  isPending: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -31,8 +29,6 @@ interface LanguageProviderProps {
 
 export function LanguageProvider({ children, initialLocale }: LanguageProviderProps) {
   const [locale, setLocaleState] = useState<Locale>(initialLocale || "ko");
-  const [isPending, startTransition] = useTransition();
-  const router = useRouter();
 
   useEffect(() => {
     const initial = getInitialLocale();
@@ -42,13 +38,11 @@ export function LanguageProvider({ children, initialLocale }: LanguageProviderPr
   const setLocale = (newLocale: Locale) => {
     document.cookie = `locale=${newLocale};path=/;max-age=31536000`;
     setLocaleState(newLocale);
-    startTransition(() => {
-      router.refresh();
-    });
+    window.location.reload();
   };
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, isPending }}>
+    <LanguageContext.Provider value={{ locale, setLocale }}>
       {children}
     </LanguageContext.Provider>
   );

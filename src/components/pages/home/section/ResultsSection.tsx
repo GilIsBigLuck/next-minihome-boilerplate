@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const resultsSectionStyles = cva([
     "max-w-layout-md mx-auto px-6 py-16 mb-20",
@@ -38,13 +39,15 @@ function ResultItem({ value, label }: ResultItemProps) {
     )
 }
 
-const resultsItems: ResultItemProps[] = [
-    { value: "140%", label: "Inquiry Increase" },
-    { value: "03", label: "Design Awards" },
-    { value: "12", label: "Global Locations" },
-]
+export default async function ResultsSection() {
+    const t = await getTranslations("home.results");
 
-export default function ResultsSection() {
+    const resultsItems: ResultItemProps[] = [
+        { value: "140%", label: t("inquiryIncrease") },
+        { value: "03", label: t("designAwards") },
+        { value: "12", label: t("globalLocations") },
+    ];
+
     return (
         <section className={resultsSectionStyles()}>
             <div className={resultsSectionGridStyles()}>

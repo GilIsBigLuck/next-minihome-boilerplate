@@ -1,7 +1,7 @@
 "use client";
 
 import { cva } from "class-variance-authority";
-import { useState } from "react";
+import { useLanguage, Locale } from "@/providers/LanguageProvider";
 
 // 언어 토글 컨테이너 스타일
 const langToggleContainerStyles = cva([
@@ -23,47 +23,36 @@ const langToggleButtonInactiveStyles = cva([
   "text-gray-600"
 ])
 
-export type Language = "KR" | "EN";
+export default function LanguageToggle() {
+  const { locale, setLocale } = useLanguage();
 
-interface LanguageToggleProps {
-  defaultLanguage?: Language;
-  onChange?: (language: Language) => void;
-}
-
-export default function LanguageToggle({ 
-  defaultLanguage = "EN",
-  onChange 
-}: LanguageToggleProps) {
-  const [language, setLanguage] = useState<Language>(defaultLanguage);
-
-  const handleLanguageChange = (lang: Language) => {
-    setLanguage(lang);
-    onChange?.(lang);
+  const handleLanguageChange = (lang: Locale) => {
+    setLocale(lang);
   };
 
   return (
     <div className={langToggleContainerStyles()}>
       <button
-        onClick={() => handleLanguageChange("EN")}
+        onClick={() => handleLanguageChange("en")}
         className={langToggleButtonStyles({
-          className: language === "EN" 
-            ? langToggleButtonActiveStyles() 
+          className: locale === "en"
+            ? langToggleButtonActiveStyles()
             : langToggleButtonInactiveStyles()
         })}
         aria-label="Switch to English"
-        aria-pressed={language === "EN"}
+        aria-pressed={locale === "en"}
       >
         EN
       </button>
       <button
-        onClick={() => handleLanguageChange("KR")}
+        onClick={() => handleLanguageChange("ko")}
         className={langToggleButtonStyles({
-          className: language === "KR" 
-            ? langToggleButtonActiveStyles() 
+          className: locale === "ko"
+            ? langToggleButtonActiveStyles()
             : langToggleButtonInactiveStyles()
         })}
         aria-label="한국어로 변경"
-        aria-pressed={language === "KR"}
+        aria-pressed={locale === "ko"}
       >
         KR
       </button>

@@ -1,20 +1,25 @@
 "use client";
 
 import { ReactNode } from "react";
+import { NextIntlClientProvider } from "next-intl";
 import QueryProvider from "./QueryProvider";
-// import AuthProvider from "./AuthProvider"; // API 비활성화로 인해 주석 처리
+import { LanguageProvider, Locale } from "./LanguageProvider";
 
 interface ProvidersProps {
   children: ReactNode;
+  locale: Locale;
+  messages: Record<string, unknown>;
 }
 
-export default function Providers({ children }: ProvidersProps) {
+export default function Providers({ children, locale, messages }: ProvidersProps) {
   return (
-    // <AuthProvider>
-      <QueryProvider>{children}</QueryProvider>
-    // </AuthProvider>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <LanguageProvider initialLocale={locale}>
+        <QueryProvider>{children}</QueryProvider>
+      </LanguageProvider>
+    </NextIntlClientProvider>
   );
 }
 
-export { QueryProvider };
-// export { QueryProvider, AuthProvider };
+export { QueryProvider, LanguageProvider };
+export type { Locale };
