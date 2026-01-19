@@ -13,7 +13,7 @@ const mapContainerStyles = cva([
 ])
 
 const mapDetailsStyles = cva([
-    "absolute bottom-10 left-10 bg-white/90 dark:bg-bg-inverse/90",
+    "absolute bottom-10 left-10 bg-white/90",
     "backdrop-blur-md p-4 rounded-lg shadow-xl border border-white/20",
     "hidden md:block z-10",
 ])
@@ -160,11 +160,11 @@ export default function MapSection() {
 
             {/* 에러 메시지 표시 */}
             {mapError && (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800 z-20">
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100 z-20">
                     <div className="text-center p-6 max-w-md">
-                        <p className="text-red-600 dark:text-red-400 font-bold mb-2">⚠️ 지도를 불러올 수 없습니다</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{mapError}</p>
-                        <p className="text-xs text-gray-500 dark:text-gray-500">
+                        <p className="text-red-600 font-bold mb-2">⚠️ 지도를 불러올 수 없습니다</p>
+                        <p className="text-sm text-gray-600 mb-4">{mapError}</p>
+                        <p className="text-xs text-gray-500">
                             네이버 클라우드 플랫폼에서 도메인 설정을 확인해주세요.
                         </p>
                     </div>

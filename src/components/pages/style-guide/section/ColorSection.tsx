@@ -38,11 +38,16 @@ interface ColorItem {
 }
 
 const colors: ColorItem[] = [
-    { name: "Primary Teal", color: "#0e776c", code: "#0E776C" },
-    { name: "Light Teal", color: "#e7f3f2", code: "#E7F3F2" },
-    { name: "Rich Black", color: "#121214", code: "#121214" },
-    { name: "Surface", color: "#fafafa", code: "#FAFAFA" },
-    { name: "Error Red", color: "#EF4444", code: "#EF4444" },
+    { name: "Primary", color: "#0e776c", code: "primary" },
+    { name: "Primary Light", color: "#e7f3f2", code: "primary-light" },
+    { name: "Background", color: "#fcfcfc", code: "bg-light" },
+    { name: "Surface", color: "#fafafa", code: "surface" },
+    { name: "Text Default", color: "#0e1b1a", code: "text" },
+    { name: "Text Secondary", color: "#6B7280", code: "text-secondary" },
+    { name: "Border", color: "#E5E7EB", code: "border" },
+    { name: "Success", color: "#16A34A", code: "state-success" },
+    { name: "Warning", color: "#F59E0B", code: "state-warning" },
+    { name: "Danger", color: "#DC2626", code: "state-danger" },
 ]
 
 export default function ColorSection() {

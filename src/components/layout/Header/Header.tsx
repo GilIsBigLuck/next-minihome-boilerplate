@@ -47,7 +47,7 @@ export default function Header() {
 
       <div className={headerInnerStyles()}>
 
-        <h1 className={logoStyles()}>
+        <div className={logoStyles()}>
           <Link href="/" className="flex items-center gap-3">
             <Image 
               src="/favicon/favicon-32x32.png" 
@@ -60,7 +60,7 @@ export default function Header() {
               Clear Sections 
             </span>
           </Link>
-        </h1>
+        </div>
 
         <div className="flex items-center gap-8">
           <nav className={navStyles()}>

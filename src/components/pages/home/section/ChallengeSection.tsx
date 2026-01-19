@@ -17,7 +17,7 @@ const challengeSectionGridStyles = cva([
 ])
 
 const challengeSectionTextStyles = cva([
-    "text-lg leading-relaxed text-gray-600 dark:text-gray-300 font-light",
+    "text-lg leading-relaxed text-gray-600 font-light",
 ])
 
 interface ChallengeContentProps {
@@ -37,9 +37,9 @@ export default function ChallengeSection() {
     return (
         <section className={challengeSectionStyles()}>
             <div className={challengeSectionInnerStyles()}>
-                <h2 className={challengeSectionTitleStyles()}>
+                <h3 className={challengeSectionTitleStyles()}>
                     {challengeContent.title}
-                </h2>
+                </h3>
                 <div className={challengeSectionGridStyles()}>
                     {challengeContent.paragraphs.map((paragraph, index) => (
                         <p key={index} className={challengeSectionTextStyles()}>

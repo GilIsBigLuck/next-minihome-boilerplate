@@ -16,8 +16,8 @@ const sectionTitleStyles = cva([
 ])
 
 const formContainerStyles = cva([
-    "bg-white dark:bg-card-dark p-8 rounded-xl",
-    "border border-primary/20 dark:border-white/10 space-y-6",
+    "bg-white p-8 rounded-xl",
+    "border border-primary/20 space-y-6",
 ])
 
 const radioGroupStyles = cva([

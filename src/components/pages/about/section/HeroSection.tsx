@@ -26,7 +26,7 @@ const heroTitleAccentStyles = cva([
 ])
 
 const heroDescriptionStyles = cva([
-    "text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed",
+    "text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed",
     "md:text-xl",
 ])
 

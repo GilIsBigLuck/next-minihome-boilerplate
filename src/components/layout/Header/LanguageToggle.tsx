@@ -5,22 +5,22 @@ import { useState } from "react";
 
 // 언어 토글 컨테이너 스타일
 const langToggleContainerStyles = cva([
-  "flex items-center gap-2 bg-bg-muted dark:bg-white/5 rounded-lg p-1"
+  "flex items-center gap-2 bg-bg-muted rounded-lg p-1"
 ])
 
 // 언어 토글 버튼 스타일
 const langToggleButtonStyles = cva([
   "px-3 py-1.5 text-xs font-semibold rounded-md transition-all",
-  "hover:bg-white/50 dark:hover:bg-white/10",
+  "hover:bg-white/50",
   "focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
 ])
 
 const langToggleButtonActiveStyles = cva([
-  "bg-white dark:bg-white/10 text-primary shadow-sm"
+  "bg-white text-primary shadow-sm"
 ])
 
 const langToggleButtonInactiveStyles = cva([
-  "text-gray-600 dark:text-gray-400"
+  "text-gray-600"
 ])
 
 export type Language = "KR" | "EN";

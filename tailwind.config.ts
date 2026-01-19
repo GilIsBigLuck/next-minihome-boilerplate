@@ -1,7 +1,6 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -13,45 +12,48 @@ const config: Config = {
        * Breakpoints (Semantic aliases)
        * ========================= */
       screens: {
-        mobile: "640px",   // sm 별칭
-        tablet: "768px",   // md 별칭
-        desktop: "1024px", // lg 별칭
-        wide: "1280px",    // xl 별칭
+        mobile: "640px",
+        tablet: "768px",
+        desktop: "1024px",
+        wide: "1280px",
       },
 
       /* =========================
        * Colors
        * ========================= */
       colors: {
+        primary: "#0e776c",
+        "primary-light": "#e7f3f2",
 
-        "primary": "#0e776c",
-        "bg-light": "#fcfcfc",
-        "bg-dark": "#0f0f0f",
-        "surface-dark": "#1a2433",
-        "card-light": "#ffffff",
-        "card-dark": "#181818",
+        bg: {
+          light: "#fcfcfc",
+          DEFAULT: "#ffffff",
+          muted: "#f7f7f7",
+          elevated: "#ffffff",
+        },
 
-        // 시맨틱 토큰 
+        surface: "#fafafa",
+
+        card: "#ffffff",
+
         text: {
           primary: "#0e776c",
+          DEFAULT: "#0e1b1a",
           secondary: "#6B7280",
           muted: "#9CA3AF",
-          inverse: "#FFFFFF",
+          inverse: "#ffffff",
         },
-        bg: {
-          default: "#FFFFFF",
-          muted: "#F7F7F7",
-          elevated: "#FFFFFF",
-          inverse: "#141414",
-        },
+
         border: {
-          default: "#E5E7EB",
+          DEFAULT: "#E5E7EB",
           subtle: "#F3F4F6",
         },
+
         brand: {
           primary: "#0e776c",
           accent: "#2563EB",
         },
+
         state: {
           success: "#16A34A",
           warning: "#F59E0B",
@@ -63,15 +65,29 @@ const config: Config = {
        * Typography
        * ========================= */
       fontFamily: {
-        display: ['"Rubik"', "sans-serif"],
-        body: ['"Noto Sans KR"', '"Inter"', "sans-serif"],
+        display: ["var(--font-rubik)", "sans-serif"],
+        body: ["var(--font-noto-sans-kr)", "var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-noto-sans-kr)", "var(--font-inter)", "sans-serif"],
       },
+
+      /* =========================
+       * Font Size (Typography Scale)
+       * h1: text-7xl (72px)
+       * h2: text-5xl (48px)
+       * h3: text-4xl (36px)
+       * h4: text-3xl (30px)
+       * h5: text-2xl (24px)
+       * h6: text-xl (20px)
+       * body: text-base (16px)
+       * small: text-sm (14px)
+       * caption: text-xs (12px)
+       * ========================= */
 
       /* =========================
        * Max Width (Layout)
        * ========================= */
       maxWidth: {
-        "layout-xm": "456px",
+        "layout-xs": "456px",
         "layout-sm": "768px",
         "layout-md": "1200px",
         "layout-lg": "1400px",

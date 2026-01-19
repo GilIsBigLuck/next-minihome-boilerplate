@@ -12,7 +12,7 @@ const formContainerStyles = cva([
 ])
 
 const formCardStyles = cva([
-    "bg-white dark:bg-gray-900 border border-primary/10 dark:border-gray-800",
+    "bg-white border border-primary/10",
     "p-8 rounded-xl shadow-card",
 ])
 
@@ -30,11 +30,11 @@ const formLabelStyles = cva([
 ])
 
 const formLabelTextStyles = cva([
-    "text-sm font-bold dark:text-gray-300",
+    "text-sm font-bold",
 ])
 
 const formInputStyles = cva([
-    "w-full rounded-lg border border-primary/20 dark:border-gray-700",
+    "w-full rounded-lg border border-primary/20",
     "bg-transparent h-14 px-4 text-base transition-all",
     "placeholder:text-gray-400",
     "focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none",
@@ -45,7 +45,7 @@ const formSelectContainerStyles = cva([
 ])
 
 const formSelectStyles = cva([
-    "w-full rounded-lg border border-primary/20 dark:border-gray-700",
+    "w-full rounded-lg border border-primary/20",
     "bg-transparent h-14 px-4 text-base transition-all appearance-none cursor-pointer",
     "focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none",
 ])
@@ -55,7 +55,7 @@ const formSelectIconStyles = cva([
 ])
 
 const formTextareaStyles = cva([
-    "w-full rounded-lg border border-primary/20 dark:border-gray-700",
+    "w-full rounded-lg border border-primary/20",
     "bg-transparent min-h-[160px] p-4 text-base transition-all",
     "placeholder:text-gray-400",
     "focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none",
@@ -102,7 +102,7 @@ const infoMainTextStyles = cva([
 ])
 
 const infoSubTextStyles = cva([
-    "text-gray-600 dark:text-gray-400 leading-relaxed",
+    "text-gray-600 leading-relaxed",
 ])
 
 const contactLinkStyles = cva([
@@ -120,13 +120,13 @@ const socialLinksStyles = cva([
 
 const socialLinkStyles = cva([
     "w-12 h-12 flex items-center justify-center rounded-lg",
-    "border border-primary/10 dark:border-gray-800",
+    "border border-primary/10",
     "hover:bg-primary/5 hover:border-primary transition-all",
     "text-gray-500 hover:text-primary",
 ])
 
 const testimonialStyles = cva([
-    "mt-12 bg-primary/5 dark:bg-primary/10 border-l-4 border-primary p-6 rounded-r-xl",
+    "mt-12 bg-primary/5 border-l-4 border-primary p-6 rounded-r-xl",
 ])
 
 const testimonialTextStyles = cva([
@@ -134,7 +134,7 @@ const testimonialTextStyles = cva([
 ])
 
 const testimonialAuthorStyles = cva([
-    "text-xs font-bold mt-3 dark:text-gray-300",
+    "text-xs font-bold mt-3",
 ])
 
 // Data

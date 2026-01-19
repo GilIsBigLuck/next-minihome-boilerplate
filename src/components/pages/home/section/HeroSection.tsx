@@ -59,9 +59,9 @@ export default async function HeroSection() {
                     <p className={heroBannerSubtitleStyles()}>
                         Sub Title
                     </p>
-                    <h2 className={heroBannerTitleStyles()}>
+                    <h1 className={heroBannerTitleStyles()}>
                         mini&apos;s <br/> Clear Sections
-                    </h2>
+                    </h1>
                 </div>
             </div>
         </div>

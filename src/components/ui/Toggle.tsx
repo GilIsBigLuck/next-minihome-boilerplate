@@ -9,7 +9,7 @@ const toggleContainerStyles = cva([
 
 const toggleTrackStyles = cva([
     "relative w-12 h-6 rounded-full transition-colors",
-    "bg-border-default dark:bg-white/10",
+    "bg-border-default",
     "group-has-[:checked]:bg-primary",
 ]);
 

@@ -13,8 +13,8 @@ const sectionTitleStyles = cva([
 ])
 
 const tableContainerStyles = cva([
-    "overflow-hidden rounded-xl border border-primary/20 dark:border-white/10",
-    "bg-white dark:bg-card-dark",
+    "overflow-hidden rounded-xl border border-primary/20",
+    "bg-white",
 ])
 
 const tableStyles = cva([
@@ -22,7 +22,7 @@ const tableStyles = cva([
 ])
 
 const tableHeaderStyles = cva([
-    "bg-primary/5 dark:bg-white/5 border-b border-primary/20 dark:border-white/10",
+    "bg-primary/5 border-b border-primary/20",
 ])
 
 const tableHeaderCellStyles = cva([
@@ -60,28 +60,58 @@ interface TypographyItem {
 
 const typographyItems: TypographyItem[] = [
     {
-        level: "H1 - ExtraBold",
-        details: "48px / 1.2 / 800",
-        example: "The quick brown fox",
-        exampleClass: "text-4xl font-extrabold"
+        level: "H1",
+        details: "text-7xl / 72px / 800",
+        example: "Heading 1",
+        exampleClass: "text-7xl font-extrabold font-display"
     },
     {
-        level: "H2 - Bold",
-        details: "32px / 1.3 / 700",
-        example: "Jumps over the lazy dog",
-        exampleClass: "text-2xl font-bold"
+        level: "H2",
+        details: "text-5xl / 48px / 700",
+        example: "Heading 2",
+        exampleClass: "text-5xl font-bold font-display"
     },
     {
-        level: "Body - Regular",
-        details: "16px / 1.6 / 400",
-        example: "This is how body text looks. It is designed to be highly readable with a generous line height for long-form content.",
-        exampleClass: "text-base leading-relaxed opacity-80"
+        level: "H3",
+        details: "text-4xl / 36px / 700",
+        example: "Heading 3",
+        exampleClass: "text-4xl font-bold font-display"
     },
     {
-        level: "Caption - Medium",
-        details: "12px / 1.4 / 500",
-        example: "System Metadata Caption",
-        exampleClass: "text-xs font-medium uppercase tracking-widest opacity-60"
+        level: "H4",
+        details: "text-3xl / 30px / 600",
+        example: "Heading 4",
+        exampleClass: "text-3xl font-semibold"
+    },
+    {
+        level: "H5",
+        details: "text-2xl / 24px / 600",
+        example: "Heading 5",
+        exampleClass: "text-2xl font-semibold"
+    },
+    {
+        level: "H6",
+        details: "text-xl / 20px / 600",
+        example: "Heading 6",
+        exampleClass: "text-xl font-semibold"
+    },
+    {
+        level: "Body",
+        details: "text-base / 16px / 400",
+        example: "본문 텍스트입니다. Body text for readability.",
+        exampleClass: "text-base leading-relaxed"
+    },
+    {
+        level: "Small",
+        details: "text-sm / 14px / 400",
+        example: "작은 텍스트입니다. Small helper text.",
+        exampleClass: "text-sm"
+    },
+    {
+        level: "Caption",
+        details: "text-xs / 12px / 500",
+        example: "캡션 텍스트 CAPTION TEXT",
+        exampleClass: "text-xs font-medium uppercase tracking-widest text-text-muted"
     }
 ]
 
@@ -101,7 +131,7 @@ export default function TypographySection() {
                             <th className={tableHeaderCellStyles()}>Example</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-primary/20 dark:divide-white/10">
+                    <tbody className="divide-y divide-primary/20">
                         {typographyItems.map((item, index) => (
                             <tr key={index}>
                                 <td className={tableCellStyles()}>

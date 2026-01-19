@@ -14,7 +14,7 @@ const paginationButtonStyles = cva(
         variants: {
             variant: {
                 default: [
-                    "border border-border-default dark:border-white/10",
+                    "border border-border-default",
                     "hover:bg-primary/5",
                 ],
                 active: [

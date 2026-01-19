@@ -2,7 +2,7 @@ import { cva } from "class-variance-authority";
 
 const heroSectionStyles = cva([
     "flex flex-col md:flex-row justify-between items-start md:items-end gap-6",
-    "border-b border-border-default dark:border-white/10 pb-8",
+    "border-b border-border-default pb-8",
 ])
 
 const heroContentStyles = cva([

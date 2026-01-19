@@ -32,7 +32,7 @@ const imagerySquareImageStyles = cva([
 ])
 
 const imageryQuoteBlockStyles = cva([
-    "bg-primary/5 dark:bg-primary/10 p-10 rounded-xl border-l-4 border-primary",
+    "bg-primary/5 p-10 rounded-xl border-l-4 border-primary",
 ])
 
 const imageryQuoteTextStyles = cva([

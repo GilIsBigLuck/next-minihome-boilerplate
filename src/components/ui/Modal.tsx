@@ -10,7 +10,7 @@ const modalOverlayStyles = cva([
 ]);
 
 const modalContentStyles = cva([
-    "w-full max-w-md bg-white dark:bg-card-dark rounded-xl shadow-2xl",
+    "w-full max-w-md bg-white rounded-xl shadow-2xl",
     "border border-black/5 p-6 space-y-4",
     "animate-fadeIn",
 ]);

@@ -14,8 +14,8 @@ const sectionTitleStyles = cva([
 ])
 
 const tableContainerStyles = cva([
-    "bg-white dark:bg-card-dark p-8 rounded-xl",
-    "border border-primary/20 dark:border-white/10 overflow-x-auto",
+    "bg-white p-8 rounded-xl",
+    "border border-primary/20 overflow-x-auto",
 ])
 
 const tableStyles = cva([

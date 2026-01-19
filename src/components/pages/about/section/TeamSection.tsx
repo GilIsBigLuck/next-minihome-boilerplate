@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const teamSectionStyles = cva([
-    "px-6 py-24 bg-white dark:bg-[#1a1f1f]",
+    "px-6 py-24 bg-white",
     "lg:px-40",
 ])
 
@@ -25,7 +25,7 @@ const teamTitleStyles = cva([
 ])
 
 const teamSubtitleStyles = cva([
-    "text-gray-600 dark:text-gray-300",
+    "text-gray-600",
 ])
 
 const teamLinkStyles = cva([
@@ -59,7 +59,7 @@ const teamMemberRoleStyles = cva([
 ])
 
 const teamMemberBioStyles = cva([
-    "text-gray-600 dark:text-gray-300 text-sm leading-relaxed",
+    "text-gray-600 text-sm leading-relaxed",
 ])
 
 interface TeamMemberProps {

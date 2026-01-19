@@ -17,7 +17,7 @@ const heroTitleAccentStyles = cva([
 ])
 
 const heroDescriptionStyles = cva([
-    "text-lg text-gray-600 dark:text-gray-400 font-medium",
+    "text-lg text-gray-600 font-medium",
 ])
 
 interface HeroContentProps {

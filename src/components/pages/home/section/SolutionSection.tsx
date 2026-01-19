@@ -19,7 +19,7 @@ const solutionTitleStyles = cva([
 ])
 
 const solutionDescriptionStyles = cva([
-    "text-lg leading-relaxed text-gray-600 dark:text-gray-300",
+    "text-lg leading-relaxed text-gray-600",
 ])
 
 const solutionImageContainerStyles = cva([

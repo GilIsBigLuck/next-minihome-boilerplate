@@ -1,11 +1,32 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Noto_Sans_KR, Inter, Rubik } from "next/font/google";
+
 import Header from "@/components/layout/Header/Header";
 import Footer from "@/components/layout/Footer/Footer";
 import Providers from "@/providers";
 
-import { cva } from "class-variance-authority";
+const notoSansKR = Noto_Sans_KR({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-noto-sans-kr",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const rubik = Rubik({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-rubik",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -61,18 +82,14 @@ export const metadata: Metadata = {
   manifest: "/favicon/manifest.json",
 };
 
-const bodyStyles = cva([
-  "flex flex-col min-h-screenbg-background-light text-[#0e1b1a] bg-bg-light  min-h-screen"
-])
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body className={bodyStyles()}>
+    <html lang="ko" className={`${notoSansKR.variable} ${inter.variable} ${rubik.variable}`}>
+      <body className="flex flex-col min-h-screen bg-bg-light text-[#0e1b1a] font-body">
         <Providers>
           <Header />
           <main className="pt-20">

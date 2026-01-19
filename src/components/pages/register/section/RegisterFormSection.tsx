@@ -9,9 +9,9 @@ const sectionStyles = cva([
 ]);
 
 const containerStyles = cva([
-    "w-full max-w-[520px] bg-white dark:bg-card-dark rounded-xl",
-    "shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)]",
-    "border border-border-default dark:border-white/5 overflow-hidden",
+    "w-full max-w-[520px] bg-white rounded-xl",
+    "shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+    "border border-border-default overflow-hidden",
 ]);
 
 const contentStyles = cva([
@@ -23,7 +23,7 @@ const titleStyles = cva([
 ]);
 
 const subtitleStyles = cva([
-    "text-gray-500 dark:text-gray-400 mb-8",
+    "text-gray-500 mb-8",
 ]);
 
 const footerStyles = cva([
@@ -31,7 +31,7 @@ const footerStyles = cva([
 ]);
 
 const footerTextStyles = cva([
-    "text-sm text-gray-500 dark:text-gray-400",
+    "text-sm text-gray-500",
 ]);
 
 const footerLinkStyles = cva([

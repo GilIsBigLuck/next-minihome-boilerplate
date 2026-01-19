@@ -9,21 +9,21 @@ const inputGroupInputStyles = cva([
     "flex-1 px-4 py-3 border transition-all",
     "focus:outline-none focus:ring-2 focus:ring-offset-0 focus:ring-primary focus:border-primary",
     "placeholder:text-gray-400",
-    "border-border-default dark:border-white/10",
-    "bg-bg-light dark:bg-bg-inverse",
+    "border-border-default",
+    "bg-bg-light",
 ]);
 
 const inputGroupPrependStyles = cva([
     "px-4 py-3 border border-r-0 rounded-l-lg",
-    "border-border-default dark:border-white/10",
-    "bg-bg-muted dark:bg-white/5",
+    "border-border-default",
+    "bg-bg-muted",
     "flex items-center text-gray-500",
 ]);
 
 const inputGroupAppendStyles = cva([
     "px-4 py-3 border border-l-0 rounded-r-lg",
-    "border-border-default dark:border-white/10",
-    "bg-bg-muted dark:bg-white/5",
+    "border-border-default",
+    "bg-bg-muted",
     "flex items-center text-gray-500",
 ]);
 

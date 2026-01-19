@@ -21,13 +21,13 @@ const navigationContainerStyles = cva([
 ])
 
 const navBoxStyles = cva([
-    "bg-white dark:bg-card-dark p-8 rounded-xl",
-    "border border-primary/20 dark:border-white/10 space-y-8",
+    "bg-white p-8 rounded-xl",
+    "border border-primary/20 space-y-8",
 ])
 
 const modalPreviewStyles = cva([
-    "bg-bg-light dark:bg-bg-inverse p-6 rounded-xl",
-    "border border-primary/20 dark:border-white/10",
+    "bg-bg-light p-6 rounded-xl",
+    "border border-primary/20",
     "relative overflow-hidden h-[240px] flex items-center justify-center",
 ])
 
@@ -36,7 +36,7 @@ const modalBackdropStyles = cva([
 ])
 
 const modalCardStyles = cva([
-    "relative w-full max-w-[320px] bg-white dark:bg-card-dark rounded-xl",
+    "relative w-full max-w-[320px] bg-white rounded-xl",
     "shadow-2xl border border-black/5 p-6 space-y-4",
 ])
 

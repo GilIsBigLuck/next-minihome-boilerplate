@@ -22,7 +22,7 @@ const portraitBackgroundStyles = cva([
 ])
 
 const portraitImageContainerStyles = cva([
-    "aspect-[3/4] w-full bg-bg-muted dark:bg-surface-dark rounded-lg overflow-hidden relative shadow-2xl",
+    "aspect-[3/4] w-full bg-bg-muted rounded-lg overflow-hidden relative shadow-2xl",
 ])
 
 const socialLinksStyles = cva([
@@ -31,7 +31,7 @@ const socialLinksStyles = cva([
 ])
 
 const socialLinkStyles = cva([
-    "p-2 rounded-full border border-border-default dark:border-gray-700",
+    "p-2 rounded-full border border-border-default",
     "hover:border-primary hover:text-primary transition-all",
 ])
 
@@ -49,7 +49,7 @@ const roleStyles = cva([
 ])
 
 const bioTextContainerStyles = cva([
-    "prose dark:prose-invert max-w-none text-lg text-gray-600 dark:text-gray-400 leading-relaxed space-y-6",
+    "prose max-w-none text-lg text-gray-600 leading-relaxed space-y-6",
 ])
 
 const ctaButtonStyles = cva([

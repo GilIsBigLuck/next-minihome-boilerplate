@@ -12,12 +12,12 @@ const nextProjectLinkStyles = cva([
 ])
 
 const nextProjectBgImageStyles = cva([
-    "absolute inset-0 object-cover opacity-40",
-    "group-hover:opacity-60 transition-opacity duration-700",
+    "absolute inset-0 object-cover opacity-70",
+    "group-hover:opacity-80 transition-opacity duration-700",
 ])
 
 const nextProjectOverlayStyles = cva([
-    "absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent",
+    "absolute inset-0 bg-gradient-to-r from-black/10 via-black/100 to-black/20",
 ])
 
 const nextProjectContentStyles = cva([

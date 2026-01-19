@@ -17,7 +17,7 @@ const selectStyles = cva(
         variants: {
             variant: {
                 default: [
-                    "border-border-default dark:border-white/10",
+                    "border-border-default",
                     "focus:ring-primary focus:border-primary",
                 ],
                 error: [

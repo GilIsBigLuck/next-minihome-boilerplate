@@ -6,7 +6,7 @@ const checkboxContainerStyles = cva([
 ]);
 
 const checkboxInputStyles = cva([
-    "w-5 h-5 rounded border-2 border-border-default dark:border-white/20",
+    "w-5 h-5 rounded border-2 border-border-default",
     "text-primary focus:ring-primary focus:ring-offset-0",
     "cursor-pointer mt-0.5",
 ]);

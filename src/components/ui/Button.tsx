@@ -17,16 +17,16 @@ const buttonStyles = cva(
                     "disabled:bg-primary/40 disabled:cursor-not-allowed disabled:shadow-none",
                 ],
                 secondary: [
-                    "bg-primary/10 dark:bg-primary/20 text-primary",
-                    "hover:bg-primary/20 dark:hover:bg-primary/30 hover:ring-4 hover:ring-primary/5",
+                    "bg-primary/10 text-primary",
+                    "hover:bg-primary/20 hover:ring-4 hover:ring-primary/5",
                     "focus:ring-primary",
                     "disabled:bg-primary/5 disabled:text-primary/40 disabled:cursor-not-allowed",
                 ],
                 outline: [
-                    "border-2 border-border-default dark:border-white/20 bg-transparent",
+                    "border-2 border-border-default bg-transparent",
                     "hover:border-primary hover:text-primary",
                     "focus:ring-primary",
-                    "disabled:border-border-default/40 disabled:text-gray-300 dark:disabled:text-gray-600 disabled:cursor-not-allowed",
+                    "disabled:border-border-default/40 disabled:text-gray-300 disabled:cursor-not-allowed",
                 ],
                 ghost: [
                     "bg-transparent",

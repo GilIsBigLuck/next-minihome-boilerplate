@@ -3,7 +3,7 @@ import Image from "next/image";
 import { getBlurDataURL } from "@/lib/plaiceholder";
 
 const storySectionStyles = cva([
-    "px-6 py-20 bg-white dark:bg-[#1a1f1f]",
+    "px-6 py-20 bg-white",
     "lg:px-40",
 ])
 
@@ -31,7 +31,7 @@ const storyTitleStyles = cva([
 ])
 
 const storyTextStyles = cva([
-    "text-gray-600 dark:text-gray-300 text-lg leading-relaxed mb-6 last:mb-0",
+    "text-gray-600 text-lg leading-relaxed mb-6 last:mb-0",
 ])
 
 const storyImageWrapperStyles = cva([

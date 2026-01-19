@@ -28,8 +28,8 @@ const fileUploadDropzoneStyles = cva([
 ], {
     variants: {
         variant: {
-            default: "border-border-default dark:border-white/20",
-            error: "border-state-danger bg-red-50 dark:bg-red-500/10",
+            default: "border-border-default",
+            error: "border-state-danger bg-red-50",
             active: "border-primary bg-primary/10",
         },
     },
@@ -59,7 +59,7 @@ const fileUploadErrorStyles = cva([
 ]);
 
 const fileUploadPreviewStyles = cva([
-    "flex items-center gap-3 p-3 bg-bg-muted dark:bg-white/5 rounded-lg",
+    "flex items-center gap-3 p-3 bg-bg-muted rounded-lg",
 ]);
 
 const fileUploadFileNameStyles = cva([
@@ -71,7 +71,7 @@ const fileUploadFileSizeStyles = cva([
 ]);
 
 const fileUploadRemoveStyles = cva([
-    "p-1 hover:bg-gray-200 dark:hover:bg-white/10 rounded transition-colors",
+    "p-1 hover:bg-gray-200 rounded transition-colors",
     "text-gray-400 hover:text-state-danger",
 ]);
 

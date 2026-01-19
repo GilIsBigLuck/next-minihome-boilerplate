@@ -25,7 +25,7 @@ const projectCardStyles = cva([
 ])
 
 const projectImageContainerStyles = cva([
-    "aspect-square bg-bg-muted dark:bg-surface-dark rounded-xl overflow-hidden mb-4 relative",
+    "aspect-square bg-bg-muted rounded-xl overflow-hidden mb-4 relative",
 ])
 
 const projectImageStyles = cva([

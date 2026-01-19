@@ -12,13 +12,13 @@ const textareaStyles = cva(
         variants: {
             variant: {
                 default: [
-                    "border-border-default dark:border-white/10",
-                    "bg-bg-light dark:bg-bg-inverse",
+                    "border-border-default",
+                    "bg-bg-light",
                     "focus:ring-primary focus:border-primary",
                 ],
                 error: [
                     "border-state-danger",
-                    "bg-red-50 dark:bg-red-500/10",
+                    "bg-red-50",
                     "focus:ring-state-danger focus:border-state-danger",
                 ],
             },

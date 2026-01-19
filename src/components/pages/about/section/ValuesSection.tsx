@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 
 const valuesSectionStyles = cva([
-    "px-6 py-24 bg-bg-light dark:bg-bg-inverse",
+    "px-6 py-24 bg-bg-light",
     "lg:px-40",
 ])
 
@@ -18,7 +18,7 @@ const valuesTitleStyles = cva([
 ])
 
 const valuesSubtitleStyles = cva([
-    "text-gray-600 dark:text-gray-300 max-w-xl mx-auto",
+    "text-gray-600 max-w-xl mx-auto",
 ])
 
 const valuesGridStyles = cva([
@@ -27,7 +27,7 @@ const valuesGridStyles = cva([
 ])
 
 const valueCardStyles = cva([
-    "bg-white dark:bg-[#2c3535] p-8 rounded-xl",
+    "bg-white p-8 rounded-xl",
     "border border-primary/5 shadow-sm",
     "hover:shadow-xl hover:-translate-y-1 transition-all",
 ])
@@ -42,7 +42,7 @@ const valueCardTitleStyles = cva([
 ])
 
 const valueCardDescriptionStyles = cva([
-    "text-gray-600 dark:text-gray-300 leading-relaxed",
+    "text-gray-600 leading-relaxed",
 ])
 
 interface ValueProps {

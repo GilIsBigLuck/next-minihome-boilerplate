@@ -26,12 +26,12 @@ const titleStyles = cva([
 ]);
 
 const subtitleStyles = cva([
-    "text-gray-500 dark:text-gray-400",
+    "text-gray-500",
 ]);
 
 const formContainerStyles = cva([
-    "w-full bg-bg-muted dark:bg-card-dark p-8 rounded-xl",
-    "border border-border-default dark:border-white/10",
+    "w-full bg-bg-muted p-8 rounded-xl",
+    "border border-border-default",
 ]);
 
 const formStyles = cva([
@@ -51,7 +51,7 @@ const dividerStyles = cva([
 ]);
 
 const dividerLineStyles = cva([
-    "flex-grow border-t border-border-default dark:border-white/10",
+    "flex-grow border-t border-border-default",
 ]);
 
 const dividerTextStyles = cva([
@@ -60,10 +60,10 @@ const dividerTextStyles = cva([
 
 const socialButtonStyles = cva([
     "flex w-full items-center justify-center gap-3 rounded-lg h-14 px-4",
-    "border border-border-default dark:border-white/10",
-    "bg-white dark:bg-bg-inverse",
+    "border border-border-default",
+    "bg-white",
     "text-sm font-semibold",
-    "hover:bg-gray-50 dark:hover:bg-white/5 transition-all",
+    "hover:bg-gray-50 transition-all",
 ]);
 
 const footerStyles = cva([
@@ -71,7 +71,7 @@ const footerStyles = cva([
 ]);
 
 const footerTextStyles = cva([
-    "text-sm font-medium text-gray-500 dark:text-gray-400",
+    "text-sm font-medium text-gray-500",
 ]);
 
 const footerLinkStyles = cva([
@@ -79,7 +79,7 @@ const footerLinkStyles = cva([
 ]);
 
 const errorStyles = cva([
-    "text-sm text-state-danger bg-red-50 dark:bg-red-500/10 p-3 rounded-lg",
+    "text-sm text-state-danger bg-red-50 p-3 rounded-lg",
 ]);
 
 // oAuth 추후 개발 예정

@@ -19,8 +19,8 @@ const expertiseGridStyles = cva([
 ])
 
 const expertiseCardStyles = cva([
-    "p-8 rounded-xl bg-bg-muted dark:bg-surface-dark",
-    "border border-border-default dark:border-gray-700",
+    "p-8 rounded-xl bg-bg-muted",
+    "border border-border-default",
     "hover:shadow-xl hover:shadow-primary/5 transition-all",
 ])
 
@@ -33,7 +33,7 @@ const expertiseCardTitleStyles = cva([
 ])
 
 const expertiseCardDescriptionStyles = cva([
-    "text-gray-500 dark:text-gray-400 leading-relaxed",
+    "text-gray-500 leading-relaxed",
 ])
 
 function getIcon(iconName: string) {
