@@ -2,7 +2,7 @@ import { cva } from "class-variance-authority";
 import Link from "next/link";
 import Image from "next/image";
 import { getBlurDataURL } from "@/lib/blur";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 const nextProjectSectionStyles = cva([
     "w-full mt-24",
@@ -42,10 +42,11 @@ const nextProjectBackgroundImage = "/dummy/logan-voss-cfEoiMkUVXU-unsplash.jpg";
 export default async function NextProjectSection() {
     const blurDataURL = getBlurDataURL();
     const t = await getTranslations("home.nextProject");
+    const locale = await getLocale();
 
     return (
         <section className={nextProjectSectionStyles()}>
-            <Link href="/style-guide" className={nextProjectLinkStyles()}>
+            <Link href={`/${locale}/style-guide`} className={nextProjectLinkStyles()}>
                 <Image
                     src={nextProjectBackgroundImage}
                     alt="Next Project Background"

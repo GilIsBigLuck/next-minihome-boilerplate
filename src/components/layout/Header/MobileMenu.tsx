@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { cva } from "class-variance-authority";
 import { useEffect } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 
 // 오버레이 스타일
 const overlayStyles = cva([
@@ -76,6 +76,8 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const t = useTranslations("common");
+  const locale = useLocale();
+  
   // ESC 키로 메뉴 닫기
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -127,21 +129,21 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* 메뉴 리스트 */}
         <div className={menuListStyles()}>
           <Link
-            href="/about"
+            href={`/${locale}/about`}
             onClick={onClose}
             className={menuItemStyles()}
           >
             {t("about")}
           </Link>
           <Link
-            href="/style-guide"
+            href={`/${locale}/style-guide`}
             onClick={onClose}
             className={menuItemStyles()}
           >
             {t("styleGuide")}
           </Link>
           <Link
-            href="/contact"
+            href={`/${locale}/contact`}
             onClick={onClose}
             className={menuItemStyles()}
           >

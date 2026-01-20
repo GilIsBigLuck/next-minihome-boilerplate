@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { cva } from "class-variance-authority";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import LanguageToggle from "./LanguageToggle";
 import HamburgerButton from "./HamburgerButton";
 import MobileMenu from "./MobileMenu";
@@ -49,6 +49,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const t = useTranslations("common");
   const tHeader = useTranslations("header");
+  const locale = useLocale();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -63,7 +64,7 @@ export default function Header() {
       <header className={headerStyles()}>
         <div className={headerInnerStyles()}>
           <div className={logoStyles()}>
-            <Link href="/" className="flex items-center gap-3">
+            <Link href={`/${locale}`} className="flex items-center gap-3">
               <Image
                 src="/favicon/favicon-32x32.png"
                 alt="Logo"
@@ -77,13 +78,13 @@ export default function Header() {
 
           <div className="flex items-center gap-8">
             <nav className={navStyles()}>
-              <Link href="/about" className={navItemStyles()}>
+              <Link href={`/${locale}/about`} className={navItemStyles()}>
                 {t("about")}
               </Link>
-              <Link href="/style-guide" className={navItemStyles()}>
+              <Link href={`/${locale}/style-guide`} className={navItemStyles()}>
                 {t("styleGuide")}
               </Link>
-              <Link href="/contact" className={navItemStyles()}>
+              <Link href={`/${locale}/contact`} className={navItemStyles()}>
                 {t("contact")}
               </Link>
             </nav>

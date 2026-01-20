@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority";
 import Image from "next/image";
 import Link from "next/link";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 const teamSectionStyles = cva([
     "px-6 py-24 bg-white",
@@ -95,9 +95,9 @@ const teamMembersData = [
     }
 ]
 
-function TeamMember({ slug, name, role, bio, image }: TeamMemberProps) {
+function TeamMember({ slug, name, role, bio, image, locale }: TeamMemberProps & { locale: string }) {
     return (
-        <Link href={`/about/team/${slug}`} className={teamMemberLinkStyles()}>
+        <Link href={`/${locale}/about/team/${slug}`} className={teamMemberLinkStyles()}>
             <div className={teamMemberImageContainerStyles()}>
                 <Image
                     src={image}
@@ -116,6 +116,7 @@ function TeamMember({ slug, name, role, bio, image }: TeamMemberProps) {
 export default async function TeamSection() {
     const t = await getTranslations("about.team");
     const tRoles = await getTranslations("about.team.roles");
+    const locale = await getLocale();
     
     const teamMembers: TeamMemberProps[] = teamMembersData.map(member => ({
         slug: member.slug,
@@ -142,7 +143,7 @@ export default async function TeamSection() {
                 </div>
                 <div className={teamGridStyles()}>
                     {teamMembers.map((member, index) => (
-                        <TeamMember key={index} {...member} />
+                        <TeamMember key={index} {...member} locale={locale} />
                     ))}
                 </div>
             </div>

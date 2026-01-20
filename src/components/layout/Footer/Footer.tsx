@@ -3,7 +3,7 @@
 import { cva } from "class-variance-authority";
 import Link from "next/link";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Modal } from "@/components/ui";
 import Image from "next/image";
 
@@ -81,29 +81,30 @@ export default function Footer() {
     const t = useTranslations("footer");
     const tNav = useTranslations("footer.nav");
     const tUi = useTranslations("ui");
+    const locale = useLocale();
     
     const navColumns = [
         {
             title: tNav("about.title"),
             links: [
-                { label: tNav("about.journeyToClarity"), href: "/about#journey-to-clarity" },
-                { label: tNav("about.corePrinciples"), href: "/about#core-principles" },
-                { label: tNav("about.meetTheVisionaries"), href: "/about#meet-the-visionaries" },
+                { label: tNav("about.journeyToClarity"), href: `/${locale}/about#journey-to-clarity` },
+                { label: tNav("about.corePrinciples"), href: `/${locale}/about#core-principles` },
+                { label: tNav("about.meetTheVisionaries"), href: `/${locale}/about#meet-the-visionaries` },
             ]
         },
         {
             title: tNav("styleGuide.title"),
             links: [
-                { label: tNav("styleGuide.typography"), href: "/style-guide#typography" },
-                { label: tNav("styleGuide.colors"), href: "/style-guide#colors" },
-                { label: tNav("styleGuide.buttons"), href: "/style-guide#buttons" },
+                { label: tNav("styleGuide.typography"), href: `/${locale}/style-guide#typography` },
+                { label: tNav("styleGuide.colors"), href: `/${locale}/style-guide#colors` },
+                { label: tNav("styleGuide.buttons"), href: `/${locale}/style-guide#buttons` },
             ]
         },
         {
             title: tNav("contact.title"),
             links: [
-                { label: tNav("contact.contactForm"), href: "/contact#contact-form" },
-                { label: tNav("contact.map"), href: "/contact#map" },
+                { label: tNav("contact.contactForm"), href: `/${locale}/contact#contact-form` },
+                { label: tNav("contact.map"), href: `/${locale}/contact#map` },
             ]
         },
     ]
