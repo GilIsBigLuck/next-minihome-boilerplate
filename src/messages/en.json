@@ -210,9 +210,9 @@
   },
   "styleGuide": {
     "hero": {
-      "title": "Style Guide",
-      "version": "Version 1.0",
-      "description": "A comprehensive guide to our design system, components, and visual language."
+      "title": "UI Style Guide",
+      "version": "Version 1.0.4",
+      "description": "A comprehensive component library and design system for the Clear Sections template. Engineered for clarity, consistency, and scale."
     },
     "typography": {
       "title": "Typography"

@@ -1,4 +1,5 @@
 import { cva } from "class-variance-authority";
+import { getTranslations } from "next-intl/server";
 
 const heroSectionStyles = cva([
     "flex flex-col md:flex-row justify-between items-start md:items-end gap-6",
@@ -21,27 +22,17 @@ const heroBadgeStyles = cva([
     "px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full uppercase tracking-widest",
 ])
 
-interface HeroSectionProps {
-    title: string;
-    description: string;
-    version: string;
-}
-
-const heroContent: HeroSectionProps = {
-    title: "UI Style Guide",
-    description: "A comprehensive component library and design system for the Clear Sections template. Engineered for clarity, consistency, and scale.",
-    version: "Version 1.0.4"
-}
-
-export default function HeroSection() {
+export default async function HeroSection() {
+    const t = await getTranslations("styleGuide.hero");
+    
     return (
         <div className={heroSectionStyles()}>
             <div className={heroContentStyles()}>
-                <h1 className={heroTitleStyles()}>{heroContent.title}</h1>
-                <p className={heroDescriptionStyles()}>{heroContent.description}</p>
+                <h1 className={heroTitleStyles()}>{t("title")}</h1>
+                <p className={heroDescriptionStyles()}>{t("description")}</p>
             </div>
             <div className="flex items-center gap-4">
-                <span className={heroBadgeStyles()}>{heroContent.version}</span>
+                <span className={heroBadgeStyles()}>{t("version")}</span>
             </div>
         </div>
     )
