@@ -212,7 +212,7 @@
     "hero": {
       "title": "UI 스타일 가이드",
       "version": "버전 1.0.4",
-      "description": "Clear Sections 템플릿을 위한 포괄적인 컴포넌트 라이브러리 및 디자인 시스템입니다. 명확성, 일관성 및 확장성을 위해 설계되었습니다."
+      "description": "mini Clear Sections 템플릿을 위한 포괄적인 컴포넌트 라이브러리·디자인 시스템입니다. 명확성, 일관성 및 확장성을 위해 설계되었습니다."
     },
     "typography": {
       "title": "타이포그래피"
@@ -242,6 +242,8 @@
       "messagePlaceholder": "메시지를 여기에 작성하세요...",
       "fileUpload": "파일 업로드",
       "fileUploadHint": "PNG, JPG, PDF 최대 10MB",
+      "fileUploadDragAndDrop": "드래그 앤 드롭 또는",
+      "fileUploadBrowse": "찾아보기",
       "toggleOn": "토글 스위치 켜기",
       "optionA": "옵션 A",
       "optionB": "옵션 B",
@@ -250,7 +252,16 @@
       "subscribeNewsletter": "뉴스레터 구독"
     },
     "navigation": {
-      "title": "네비게이션 및 모달"
+      "title": "네비게이션 및 모달",
+      "breadcrumb": {
+        "home": "홈",
+        "library": "라이브러리",
+        "styleGuide": "스타일 가이드"
+      },
+      "modal": {
+        "confirmation": "확인",
+        "confirmationMessage": "변경사항을 적용하시겠습니까?"
+      }
     }
   },
   "team": {

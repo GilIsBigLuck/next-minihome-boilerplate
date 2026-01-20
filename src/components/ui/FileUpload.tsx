@@ -2,6 +2,7 @@
 
 import { cva, type VariantProps } from "class-variance-authority";
 import { InputHTMLAttributes, forwardRef, useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 
 const fileUploadContainerStyles = cva([
     "space-y-2",
@@ -125,6 +126,7 @@ export interface FileUploadProps
 
 const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
     ({ className, variant, label, error, hint, accept, maxSize, value, onChange, ...props }, ref) => {
+        const t = useTranslations("styleGuide.forms");
         const [isDragging, setIsDragging] = useState(false);
         const [internalFile, setInternalFile] = useState<File | null>(null);
         const inputRef = useRef<HTMLInputElement>(null);
@@ -211,8 +213,8 @@ const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
                     >
                         <UploadIcon />
                         <p className={fileUploadTextStyles()}>
-                            Drag and drop or{" "}
-                            <span className={fileUploadButtonStyles()}>browse</span>
+                            {t("fileUploadDragAndDrop")}{" "}
+                            <span className={fileUploadButtonStyles()}>{t("fileUploadBrowse")}</span>
                         </p>
                         {hint && <p className={fileUploadHintStyles()}>{hint}</p>}
                         <input

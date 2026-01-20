@@ -2,6 +2,8 @@
 
 import { cva } from "class-variance-authority";
 import { useState } from "react";
+import { useTranslations, useLocale } from "next-intl";
+import Link from "next/link";
 import { Breadcrumb, Pagination, Button } from "@/components/ui";
 
 const sectionStyles = cva([
@@ -79,20 +81,25 @@ function CloseIcon() {
     )
 }
 
-const breadcrumbItems = [
-    { label: "Home", href: "/" },
-    { label: "Library", href: "#" },
-    { label: "Style Guide" },
-];
-
 export default function NavigationSection() {
+    const t = useTranslations("styleGuide.navigation");
+    const tBreadcrumb = useTranslations("styleGuide.navigation.breadcrumb");
+    const tModal = useTranslations("styleGuide.navigation.modal");
+    const tUi = useTranslations("ui");
+    const locale = useLocale();
     const [currentPage, setCurrentPage] = useState(1);
+
+    const breadcrumbItems = [
+        { label: tBreadcrumb("home"), href: `/${locale}` },
+        { label: tBreadcrumb("library"), href: "#" },
+        { label: tBreadcrumb("styleGuide") },
+    ];
 
     return (
         <section id="navigation" className={sectionStyles()}>
             <div className={sectionHeaderStyles()}>
                 <LayersIcon />
-                <h2 className={sectionTitleStyles()}>Navigation &amp; Modal</h2>
+                <h2 className={sectionTitleStyles()}>{t("title")}</h2>
             </div>
             <div className={navigationContainerStyles()}>
                 {/* Breadcrumbs & Pagination */}
@@ -110,17 +117,17 @@ export default function NavigationSection() {
                     <div className={modalBackdropStyles()} />
                     <div className={modalCardStyles()}>
                         <div className={modalHeaderStyles()}>
-                            <h3 className={modalTitleStyles()}>Confirmation</h3>
+                            <h3 className={modalTitleStyles()}>{tModal("confirmation")}</h3>
                             <span className={modalCloseStyles()}>
                                 <CloseIcon />
                             </span>
                         </div>
                         <p className={modalBodyStyles()}>
-                            Are you sure you want to publish these changes to production?
+                            {tModal("confirmationMessage")}
                         </p>
                         <div className={modalFooterStyles()}>
-                            <Button variant="ghost" size="sm">Cancel</Button>
-                            <Button variant="primary" size="sm">Confirm</Button>
+                            <Button variant="ghost" size="sm">{tUi("cancel")}</Button>
+                            <Button variant="primary" size="sm">{tUi("confirm")}</Button>
                         </div>
                     </div>
                 </div>

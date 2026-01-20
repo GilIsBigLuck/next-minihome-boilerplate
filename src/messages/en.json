@@ -242,6 +242,8 @@
       "messagePlaceholder": "Write your message here...",
       "fileUpload": "File Upload",
       "fileUploadHint": "PNG, JPG, PDF up to 10MB",
+      "fileUploadDragAndDrop": "Drag and drop or",
+      "fileUploadBrowse": "browse",
       "toggleOn": "Toggle Switch On",
       "optionA": "Option A",
       "optionB": "Option B",
@@ -250,7 +252,16 @@
       "subscribeNewsletter": "Subscribe to newsletter"
     },
     "navigation": {
-      "title": "Navigation & Modal"
+      "title": "Navigation & Modal",
+      "breadcrumb": {
+        "home": "Home",
+        "library": "Library",
+        "styleGuide": "Style Guide"
+      },
+      "modal": {
+        "confirmation": "Confirmation",
+        "confirmationMessage": "Are you sure you want to publish these changes to production?"
+      }
     }
   },
   "team": {
